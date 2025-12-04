@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../../globals.css";
 import Header from "@/components/header/header";
+import UserHeader from "@/components/pages/user/userHeader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Faça seu login",
-  description: "Área de login",
+  title: "Usuário",
+  description: "Área do usuário",
 };
 
 export default function RootLayout({
@@ -27,7 +28,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      ><Header />
+      ><UserHeader />
         {children}
       </body>
     </html>

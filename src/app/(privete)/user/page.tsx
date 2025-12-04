@@ -1,15 +1,13 @@
-import { FeedArea } from "@/components/pages/feed/feedArea";
 import { Footer } from "@/components/pages/feed/footer";
+import { UserArea } from "@/components/pages/user/userArea";
 
-
-export default function Home() {
+const Page = () => {
   return (
     <div
       className="flex min-h-screen items-center flex-col 
      text-white overflow-hidden"
-    >
-      <FeedArea />
-      <Footer />
+    ><UserArea/>
     </div>
-  );
-}
+  )
+};
+export default Page;

@@ -1,7 +1,8 @@
-import { FeedAreaPosts } from "./feedAreaPosts";
-import { FeedAreaSidebar } from "./feedAreaSidebar";
+import { NavBar } from "@/components/navBar";
+import { UserAreaPosts } from "./userAreaPosts";
+import { UserAreaSidebar } from "./userAreaSidebar";
 
-export const FeedArea = () => {
+export const UserArea = () => {
   return (
     
     <div
@@ -12,8 +13,9 @@ export const FeedArea = () => {
       lg:w-1/5 h-4/5 items-center justify-center bg-gray-900/50 text-gray-400">
         anucios
       </div>
-      <FeedAreaPosts />
-      <FeedAreaSidebar />
+      <UserAreaPosts/>
+      <UserAreaSidebar/>
+      <NavBar/>
     </div> 
   );
 }

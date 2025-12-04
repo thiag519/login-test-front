@@ -6,7 +6,11 @@ type Props = {
 export const Avatar = ({name}:Props) => {
   let sigla = setShortName(name)
   return (
-    <div className=" rounded-full w-10 h-10 bg-blue-600 flex items-center 
-    justify-center text-xl">{sigla}</div>
-  )
+    <div
+      className=" rounded-full w-10 h-10 bg-gray-600 flex items-center 
+    justify-center text-xl text-gray-400"
+    >
+      {sigla}
+    </div>
+  );
 }

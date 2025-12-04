@@ -1,7 +1,9 @@
+import { LoginArea } from "@/components/pages/login/loginArea";
+
 export default function  Login() {
   return (
-    <div className="flex h-9/10 items-center justify-center font-sans 
-    text-white w-full dark:"
-    >Login</div>
+    <div className="flex w-full h-screen  items-center justify-center 
+    text-white"
+    ><LoginArea/></div>
   );
 };
