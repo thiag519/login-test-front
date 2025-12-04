@@ -6,7 +6,7 @@ type Props = {
 export const Avatar = ({name}:Props) => {
   let sigla = setShortName(name)
   return (
-    <div className=" rounded-full w-12 h-12 bg-blue-600 flex items-center 
+    <div className=" rounded-full w-10 h-10 bg-blue-600 flex items-center 
     justify-center text-xl">{sigla}</div>
   )
 }

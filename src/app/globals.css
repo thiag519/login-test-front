@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --LightSeaGreen:#20B2AA;
+  --DeepSkyBlue: #0073ff;
+  --grey11: #1C1C1C;
 }
 body::-webkit-scrollbar-x{
   width: 0px;
