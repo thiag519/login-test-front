@@ -20,7 +20,7 @@ export const CadastroArea = () => {
             <Input
               type="text"
               value=""
-              placeholde="Digite seu nome..."
+              placeholder="Digite seu nome..."
               onChange={() => {}}
             />
           </label>
@@ -29,7 +29,7 @@ export const CadastroArea = () => {
             <Input
               type="email"
               value=""
-              placeholde="Digite seu e-mail..."
+              placeholder="Digite seu e-mail..."
               onChange={() => {}}
             />
           </label>
@@ -38,7 +38,7 @@ export const CadastroArea = () => {
             <Input
               type="password"
               value=""
-              placeholde="Digite sua senha..."
+              placeholder="Digite sua senha..."
               onChange={() => {}}
             />
           </label>

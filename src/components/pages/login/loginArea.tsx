@@ -20,7 +20,7 @@ export const LoginArea = () => {
             <Input
               type="email"
               value=""
-              placeholde="Digite seu e-mail..."
+              placeholder="Digite seu e-mail..."
               onChange={() => {}}
             />
           </label>
@@ -29,7 +29,7 @@ export const LoginArea = () => {
             <Input
               type="password"
               value=""
-              placeholde="Digite sua senha..."
+              placeholder="Digite sua senha..."
               onChange={() => {}}
             />
           </label>

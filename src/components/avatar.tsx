@@ -1,7 +1,7 @@
 import { setShortName } from "@/utils/setShortName";
 
 type Props = {
-  name: string;
+  name: string | undefined;
 }
 export const Avatar = ({name}:Props) => {
   let sigla = setShortName(name)
