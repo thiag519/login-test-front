@@ -6,6 +6,7 @@ import imgDown from "../../../../public/images/down.png";
 import imgArrow from "../../../../public/images/icons8-arrow-50.png";
 import { ButtonCreatePost } from "./buttonCreatePost";
 import { useActive } from "@/components/hooks/useActive";
+import Link from "next/link";
 
 
 export const UserAreaSidebar = () => {
@@ -19,7 +20,7 @@ export const UserAreaSidebar = () => {
         <ButtonCreatePost img={imgPlus} text="Criar Post" onClick={toggleActive} />
         <ButtonCreatePost img={imgUp} text="ReactUp" onClick={() => {}} />
         <ButtonCreatePost img={imgDown} text="ReactDown" onClick={() => {}} />
-        <ButtonCreatePost img={imgArrow} text="Voltar" onClick={() => {}} />
+        <Link href={'/feed'}><ButtonCreatePost img={imgArrow} text="Voltar" onClick={() => {}} /></Link>
       </div>
     </div>
   );

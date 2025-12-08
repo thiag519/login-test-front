@@ -1,34 +1,24 @@
 import { Avatar } from "@/components/avatar";
-import { setFullName } from "@/utils/setFullName";
+import { UserType } from "@/types/userType";
 
-const name = 'thiago souza'
-export const FeedAreaSidebar = () => {
-  let fullName = setFullName(name);
+type Props = {
+  users:UserType[];
+}
+export const FeedAreaSidebar = (users:Props) => {
+  
   return (
     <div
       className="w-0 hidden md:flex flex-col bg-gray-900 my-5 mx-3 rounded-2xl md:w-1/4 
       lg:w-1/5 gap-7  h-4/5 right-0 items-center justify-start py-10 text-gray-400"
-    >
-      <div className="flex gap-3 border-b border-gray-400">
-        <Avatar name="thiago souza" />
+    >{users.users.map( user => (
+      <div key={user.id} className="flex gap-3 border-b border-gray-400">
+        <Avatar name={user.name} />
         <p className="text-xl flex items-center h-13  ">
-          {fullName![0]} {fullName ? fullName[1] : ""}
+          {user.name}
         </p>
       </div>
-
-      <div className="flex gap-3 border-b border-gray-400">
-        <Avatar name="thiago souza" />
-        <p className="text-xl flex items-center h-13  ">
-          {fullName![0]} {fullName ? fullName[1] : ""}
-        </p>
-      </div>
-      
-      <div className="flex gap-3 border-b border-gray-400">
-        <Avatar name="thiago souza" />
-        <p className="text-xl flex items-center h-13  ">
-          {fullName![0]} {fullName ? fullName[1] : ""}
-        </p>
-      </div>
+    ))
+    }
     </div>
   );
 }

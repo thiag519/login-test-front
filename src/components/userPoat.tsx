@@ -1,26 +1,15 @@
 "use client"
 
-import { setFullName } from "@/utils/setFullName";
-import { Avatar } from "./avatar";
-import { UsersAreaType } from "@/types/usersAreaType";
-import { useEffect, useState } from "react";
-import { getUsers } from "@/data/getUsers";
 import { UserType } from "@/types/userType";
+import { CardPost } from "./cardPost";
 
 type Props = {
-  userId: number;
+  users: UserType;
 }
-export const UserPost = ({userId}:Props) => {
-
-  
-//fullName = setFullName(item.name)as string[],
+export const UserPost = ({users}:Props) => {
   return (
-    <>
-      <div key={``} className="w-full flex items-center justify-around gap-10 border-b
-      border-gray-400 p-3">
-        <Avatar name={``} />
-        <p className="text-xl text-gray-400">{``}</p>
-      </div>
-    </>
+    <div className="w-full flex items-center justify-center ">
+      <CardPost author={users.id} name={users.name}  />
+    </div>
   );
 } 

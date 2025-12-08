@@ -7,6 +7,6 @@ export type UserType = {
   password?:string;
   token?:string;
   createAt:Date;
-  count:number;
+  _count:number;
   posts:PostType[];
 }

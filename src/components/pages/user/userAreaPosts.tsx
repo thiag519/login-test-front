@@ -1,6 +1,13 @@
-import { Post } from "@/components/post";
 
-export const UserAreaPosts = () => {
+import { UserType } from "@/types/userType";
+import { CardUser } from "./cardUser";
+type Props = {
+  user: UserType[];
+}
+export const UserAreaPosts = (user:Props) => {
+  
+
+  user.user
   return (
     <div
       className="w-full md:w-1/2 h-9/10 my-3 flex flex-col items-center justify-center 
@@ -11,11 +18,14 @@ export const UserAreaPosts = () => {
         }}
         className="w-full h-full overflow-y-scroll flex flex-col items-center"
       >
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        {user.user.map(u => (
+          <CardUser
+            key={u.id}
+            name={u.name}
+            author={u.id}
+          />
+        ))
+        }
       </div>
     </div>
   );

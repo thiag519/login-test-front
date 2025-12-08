@@ -6,6 +6,7 @@ import imgDown from "../../public/images/down.png";
 import imgArrow from "../../public/images/icons8-arrow-50.png";
 import { ButtonCreatePost } from "./pages/user/buttonCreatePost";
 import { useActive } from './hooks/useActive';
+import Link from 'next/link';
 
 
 export const NavBar = () => {
@@ -21,7 +22,7 @@ export const NavBar = () => {
       ><ButtonCreatePost img={imgPlus} text=""onClick={toggleActive}/>
         <ButtonCreatePost img={imgUp} text="" onClick={() => {}} />
         <ButtonCreatePost img={imgDown} text="" onClick={() => {}} />
-        <ButtonCreatePost img={imgArrow} text="" onClick={() => {}} />
+        <Link className='' href={'/feed'}><ButtonCreatePost img={imgArrow} text="" onClick={() => {}} /></Link>
       </div>
     </div>
   );

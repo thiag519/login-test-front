@@ -3,8 +3,20 @@
 import { NavBar } from "@/components/navBar";
 import { UserAreaPosts } from "./userAreaPosts";
 import { UserAreaSidebar } from "./userAreaSidebar";
+import { useEffect, useState } from "react";
+import { UsersAreaType } from "@/types/usersAreaType";
+import { getUsers } from "@/data/getUsers";
+
 
 export const UserArea = () => {
+  
+  const [users, setUsers]= useState<UsersAreaType | null>(null);
+   
+  useEffect(()=> {getUsers().then(setUsers).catch(console.error)},[]);
+  if(!users)return null;
+
+  const user = users.users;
+  const userValidationId = user.filter(e => e.id == 5)
 
   return (
     <div
@@ -17,7 +29,7 @@ export const UserArea = () => {
       >
         anucios
       </div>
-        <UserAreaPosts />
+        <UserAreaPosts user={userValidationId} />
         <UserAreaSidebar />
         <NavBar />
     </div>
