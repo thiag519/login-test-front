@@ -5,22 +5,21 @@ import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 export const LoginArea = () => {
-   const {register, handleSubmit} = useForm<IFormValues>();
-  
-    const onSubmit:SubmitHandler<IFormValues> = (data:IFormValues) => {console.log(JSON.stringify(data))};
+  const {register, handleSubmit} = useForm<IFormValues>();
+  const onSubmit:SubmitHandler<IFormValues> = (data:IFormValues) => {console.log(JSON.stringify(data))};
   
   return (
-    <div className="flex rounded-xl w-9/10 md:w-7/10 lg:w-3/5 h-7/10 bg-gray-900">
-      <div className="hidden md:flex w-2/5 lg:w-2/4 h-full "> </div>
+    <div className="flex rounded-lg w-9/10 md:w-7/10 lg:w-3/5 h-7/10 bg-gray-900 lg:justify-between min-h-80">
+      <div className="hidden md:flex w-2/5 lg:w-2/4 h-full min-h-80 "> </div>
       <div
-        className="flex flex-col items-center justify-center w-full md:w-3/5 lg:2/4 h-full rounded-xl
-       bg-amber-50/30 px-4 md:px-6 lg:px-10 gap-10 max-w-120"
+        className="flex flex-col items-center justify-center w-full md:w-3/5 lg:w-2/4 h-full rounded-lg
+       bg-amber-50/30 px-4 md:px-6 lg:px-10 gap-7 sm:gap-10 max-w-120 sm:min-w-110 min-h-80"
       >
-        <h1 className="text-4xl text-gray-400 ">Login</h1>
+        <h1 className="sm:text-4xl text-3xl text-gray-400">Login</h1>
         <div className="h-0.5 w-full bg-gray-400"></div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-full h-2/6 flex flex-col"
+          className="w-full sm:h-2/6 h-2/5 flex flex-col "
         >
           <Input
             type="email"
@@ -43,7 +42,10 @@ export const LoginArea = () => {
           </label>
         </form>
         <div className="h-0.5 w-full bg-gray-400"></div>
-        <Link className="text-sm text-gray-400" href={"/cadastro"}>
+        <Link
+          className="sm:text-sm text-[12px] text-gray-400"
+          href={"/cadastro"}
+        >
           Ainda não possue conta?
           <u className="font-bold"> Faça seu Cadastro.</u>
         </Link>

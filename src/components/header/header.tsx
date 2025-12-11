@@ -1,47 +1,63 @@
 "use client";
 
-import { useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { Button } from "../button";
 import { Avatar } from "../avatar";
-import { IFormValues, Input } from "../input";
 import Link from "next/link";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { searchUserName } from "@/data/public/searchUserName";
+import { SearchUserNameType } from "@/types/searchUserNameType";
 
 const Header = () => {
   const [active, setActive] = useState(false);
-   const {register, handleSubmit} = useForm<IFormValues>();
-   const onSubmit:SubmitHandler<IFormValues> = (data:IFormValues) => {console.log(JSON.stringify(data))};
-    
-  
+  const [search, setSearch ] = useState<SearchUserNameType | null>(null);
+  const [value, setValue] = useState('');
+   
+  useEffect(()=> {searchUserName(value).then(setSearch).catch(console.error);},[value]);
+
+  const arrName = search?.arrName
   return (
     <header
       className={`w-dvw left-0 top-0 flex-1 py-2
         h-[7vh] min-h-14 flex items-center justify-center z-50 fixed bg-gray-900
       `}
     >
-      <div className="w-[80%] flex items-center justify-between gap-3 ">
+      <div className="w-[80%]  lg:w-7/10 flex items-center justify-between gap-3 ">
         <div className="text-gray-400 text-2xl">LOGO</div>
         <div className="h-full w-full flex items-center justify-end gap-3 ">
-          <div className="w-2/4 min-w-40 max-w-130 h-10 top-0">
-            <Input
-              label="pesquisa"
-              register={register}
-              placeholder="Buscar usuário..."
-              type="text"
+          <form
+            onSubmit={() => {}}
+            className="w-2/4 min-w-40 max-w-130 h-10 top-0"
+          >
+            <input
+              className="w-full min-h-10 sm:h-full text-sm text-gray-400  border bg-gray-800/30 border-gray-600 rounded-xl px-5 
+              shadow-2xl hover:bg-gray-800 hover:border-gray-800 outline-0"
+              type="search"
+              placeholder={"Buscar..."}
+              required
+              autoComplete="off"
+              value={value}
+              onChange={(e) => {
+                setValue(e.target.value);
+              }}
             />
-          </div>
-          <div className="h-full ">
+            <div
+              className={`w-full h-auto ${arrName? 'flex': 'hidden'} flex-col bg-gray-900 border-b p-3 text-gray-500 border-gray-400 rounded-b-lg`}
+            >
+              {arrName &&
+                arrName.map((item, index) => (
+                  <ul key={index}>
+                    <li>{item}</li>
+                  </ul>
+                ))}
+            </div>
+          </form>
+          <div className="h-full w-10 ">
             {active ? (
               <Avatar name="Thiago souza" />
             ) : (
-              <Link href={`/login`}>
-                <Button
-                  name="Login"
-                  size={65}
-                  color={"SteelBlue"}
-                  onClick={() => {}}
-                />
-              </Link>
+              <div className=" w-10 rounded-full h-10 bg-gray-400 ">
+                <Button name="Login" size={100} color={""} onClick={() => {}} />
+              </div>
             )}
           </div>
         </div>

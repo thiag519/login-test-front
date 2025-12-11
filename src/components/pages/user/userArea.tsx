@@ -5,7 +5,7 @@ import { UserAreaPosts } from "./userAreaPosts";
 import { UserAreaSidebar } from "./userAreaSidebar";
 import { useEffect, useState } from "react";
 import { UsersAreaType } from "@/types/usersAreaType";
-import { getUsers } from "@/data/getUsers";
+import { getUsers } from "@/data/public/getUsers";
 
 
 export const UserArea = () => {
@@ -24,7 +24,7 @@ export const UserArea = () => {
       bottom-0"
     >
       <div
-        className=" w-0 left-0 mx-3 my-5 rounded-2xl hidden md:flex md:w-1/4 
+        className=" w-0 left-0 mx-3 my-5 rounded-e-sm hidden md:flex md:w-1/4 
       lg:w-1/5 h-4/5 items-center justify-center bg-gray-900/50 text-gray-400"
       >
         anucios

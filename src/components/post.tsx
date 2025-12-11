@@ -20,7 +20,7 @@ export const Post = ({userPosts,name}:Props) => {
       {userPosts.map((post) => (
         <div key={post.id} className="w-4/5 max-w-100 min-w-90 h-auto my-10">
           <div
-            className="w-full h-auto border-b-2 rounded-2xl bg-gray-900 border-gray-400 
+            className="w-full h-auto border-b-2 rounded-sm bg-gray-900 border-gray-400 
             flex flex-col p-6"
           ><div className="w-full flex items-center justify-around gap-10 border-b border-gray-400 p-3"
             > <Avatar name={name} />

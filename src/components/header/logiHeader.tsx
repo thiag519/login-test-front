@@ -1,6 +1,7 @@
 "use client";
 
 import { Avatar } from "@/components/avatar";
+import { MenuLine } from "./menu-line";
 
 const LoginHeader = () => {
   
@@ -12,10 +13,8 @@ const LoginHeader = () => {
         <div className="text-3xl text-gray-400">
          Logo
         </div>
-        <div className="h-full w-full flex items-center justify-end gap-3 ">
-          <div className="h-full ">
-            <Avatar name="Thiago souza" />
-          </div>
+        <div className="h-full w-full flex items-center justify-end">
+          <MenuLine/>
         </div>
       </div>
     </header>

@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { PostsAreaType } from "@/types/postsAreaType";
-import { getPosts } from "@/data/getPosts";
+import { getPosts } from "@/data/public/getPosts";
 import { Post } from "@/components/post";
 
 type Props = {

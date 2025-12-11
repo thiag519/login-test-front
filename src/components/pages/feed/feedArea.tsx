@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { FeedAreaPosts } from "./feedAreaPosts";
 import { FeedAreaSidebar } from "./feedAreaSidebar";
 import { UsersAreaType } from "@/types/usersAreaType";
-import { getUsers } from "@/data/getUsers";
+import { getUsers } from "@/data/public/getUsers";
 
 export const FeedArea = () => {
   const [users, setUsers]= useState<UsersAreaType | null>(null);
@@ -18,7 +18,7 @@ export const FeedArea = () => {
       bottom-0"
     >
       <div
-        className=" w-0 left-0 mx-3 my-5 rounded-2xl hidden md:flex md:w-1/4 
+        className=" w-0 left-0 mx-3 my-5 rounded-e-md hidden md:flex md:w-1/4 
       lg:w-1/5 h-4/5 items-center justify-center bg-gray-900/50 text-gray-400"
       >
         anucios

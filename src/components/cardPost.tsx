@@ -2,7 +2,7 @@
 import { Post } from "./post";
 import { useEffect, useState } from "react";
 import { PostsAreaType } from "@/types/postsAreaType";
-import { getPosts } from "@/data/getPosts";
+import { getPosts } from "@/data/public/getPosts";
 import { UserType } from "@/types/userType";
 
 type Props = {

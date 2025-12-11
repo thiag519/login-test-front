@@ -13,7 +13,8 @@ export const NavBar = () => {
   const {active, toggleActive} = useActive()
   return (
     <div
-      className="w-full md:hidden flex items-center justify-center h-13 bg-gray-900 rounded-t-2xl border-t border-gray-400 
+      className="w-full md:hidden flex items-center justify-center h-13 bg-gray-900 rounded-t-sm border-t
+      border-gray-400 
     bottom-0 fixed"
     >
       <div
