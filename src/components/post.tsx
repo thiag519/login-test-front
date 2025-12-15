@@ -14,7 +14,7 @@ type Props = {
 export const Post = ({userPosts,name}:Props) => {
   const handleVoteUpButton = () => {};
   const handleVoteDownButton = () => {};
-
+  //console.log(userPosts)
   return (
     <>
       {userPosts.map((post) => (
@@ -22,8 +22,9 @@ export const Post = ({userPosts,name}:Props) => {
           <div
             className="w-full h-auto border-b-2 rounded-sm bg-gray-900 border-gray-400 
             flex flex-col p-6"
-          ><div className="w-full flex items-center justify-around gap-10 border-b border-gray-400 p-3"
-            > <Avatar name={name} />
+          >
+            <div className="w-full flex items-center justify-around gap-10 border-b border-gray-400 p-3">
+              <Avatar name={name} />
               <p className="text-xl text-gray-400">{name}</p>
             </div>
             <PostArea
@@ -50,6 +51,21 @@ export const Post = ({userPosts,name}:Props) => {
           </div>
         </div>
       ))}
+      {userPosts.length == 0 && (
+        <div className="w-4/5 max-w-100 min-w-90 h-auto my-10">
+          <div
+            className="w-full h-auto border-b-2 rounded-sm bg-gray-900 border-gray-400 
+            flex flex-col p-6"
+          >
+            <div className="w-full flex items-center justify-around gap-10 border-b border-gray-400 p-3">
+              
+              <p className="text-xl text-gray-400"></p>
+            </div>
+           
+            Posts não encontrados
+          </div>
+        </div>
+      )}
     </>
   );    
 }

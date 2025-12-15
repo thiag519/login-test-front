@@ -12,13 +12,15 @@ export const ButtonCreatePost = ({img,text,onClick}:Props) => {
   return (
     <button
       onClick={() => onClick() }
-      className="w-auto gap-3 flex items-center justify-between"
+      className="w-auto flex items-center justify-between"
     >
       <Image
         className="h-8 cursor-pointer i"
         src={img}
-        width={25}
+        width={32}
+        height={32}
         alt="adicionar"
+        sizes=""
       />
       <span>{text}</span>
     </button>

@@ -1,17 +1,28 @@
 "use client";
 
 import { IFormValues, Input } from "@/components/input";
+import { createUser } from "@/data/public/createUser";
+import { RegisterType } from "@/types/registerType";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 
 export const CadastroArea = () => {
-  const {register, handleSubmit} = useForm<IFormValues>();
+  const router = useRouter();
+  const {register, handleSubmit,formState:{errors}, reset} = useForm<IFormValues>();
 
-  const onSubmit:SubmitHandler<IFormValues> = (data:IFormValues) => {console.log(JSON.stringify(data))};
+  const onSubmit:SubmitHandler<IFormValues> = async (data:IFormValues) => {
+    //console.log(JSON.stringify(data));
+    const result = await createUser(data as RegisterType);
+    if(result.success){
+      reset();
+      router.push("/login");
+    };
+  };
 
   return (
-    <div className="flex rounded-lg w-4/5 md:w-7/10 lg:w-3/5 h-7/10 sm:bg-gray-900 ">
+    <div className="flex rounded-lg w-4/5 md:w-7/10 lg:w-3/5 h-7/10 bg-gray-900 ">
       <div className="hidden md:flex w-2/5  lg:w-2/4 h-full "></div>
       <div
         className="flex flex-col items-center justify-center w-full md:w-3/5 lg:2/4 h-full rounded-lg
@@ -24,7 +35,7 @@ export const CadastroArea = () => {
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-full sm:h-2/6 h-2/5 flex flex-col min-h-50"
+          className="w-full sm:h-2/5 h-2/5 flex flex-col min-h-50"
         >
           <Input
             register={register}
@@ -54,6 +65,21 @@ export const CadastroArea = () => {
         </form>
 
         <div className="h-0.5 w-full bg-gray-400"></div>
+        {errors.email && (
+          <span className="text-sm text-gray-400 h-1/6">
+            {errors.email.message}
+          </span>
+        )}
+        {errors.name && (
+          <span className="text-sm text-gray-400 h-1/6">
+            {errors.name.message}
+          </span>
+        )}
+        {errors.password && (
+          <span className="text-sm text-gray-400 h-1/6">
+            {errors.password.message}
+          </span>
+        )}
         <Link className="text-sm text-gray-400 h-1/6" href={"/login"}>
           Já possue conta?
           <u className="font-bold"> Faça seu Login.</u>

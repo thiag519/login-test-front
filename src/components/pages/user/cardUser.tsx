@@ -16,8 +16,7 @@ export const CardUser = ({ author, name}:Props) => {
     useEffect(()=> {getPosts().then(setPostsI).catch(console.error)},[]);
     if(!postsI)return null;
     const post = postsI.posts;
-    const postUser = post.filter(e => e.userId === author)
-    console.log(postUser)
+    const postUser = post.filter(e => e.userId === author);
 
   return (
     <div className="w-full flex items-center justify-center flex-col">

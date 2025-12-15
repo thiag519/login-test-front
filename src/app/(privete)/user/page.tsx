@@ -5,12 +5,14 @@ import { CreatePost } from "@/components/pages/user/createPost";
 import { UserArea } from "@/components/pages/user/userArea";
 
 const Page = () => {
-  const {active, toggleActive} = useActive()
+  const {active, toggleActive} = useActive();
+  
   return (
     <div
       className="flex min-h-screen items-center flex-col 
      text-white overflow-hidden"
-    ><UserArea/>
+    >
+      <UserArea/>
       {active && <CreatePost/> }
     </div>
   )

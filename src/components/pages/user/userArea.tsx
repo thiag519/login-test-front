@@ -6,17 +6,21 @@ import { UserAreaSidebar } from "./userAreaSidebar";
 import { useEffect, useState } from "react";
 import { UsersAreaType } from "@/types/usersAreaType";
 import { getUsers } from "@/data/public/getUsers";
+import { useIdUser } from "@/components/hooks/useIdUser";
 
 
 export const UserArea = () => {
-  
+  const { userId, setUserId } = useIdUser();
   const [users, setUsers]= useState<UsersAreaType | null>(null);
    
   useEffect(()=> {getUsers().then(setUsers).catch(console.error)},[]);
   if(!users)return null;
 
   const user = users.users;
-  const userValidationId = user.filter(e => e.id == 5)
+  if(!userId) {
+    //console.log("userId ausente: ", userId)
+  }
+  const userValidationId = user.filter(e => e.id === userId)
 
   return (
     <div

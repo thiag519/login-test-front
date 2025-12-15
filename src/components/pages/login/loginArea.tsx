@@ -1,12 +1,30 @@
 "use client"
 
+import { useIdUser } from "@/components/hooks/useIdUser";
 import { IFormValues, Input } from "@/components/input";
+import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 export const LoginArea = () => {
+  const router = useRouter();
+  const {userId, setUserId} = useIdUser()
+
   const {register, handleSubmit} = useForm<IFormValues>();
-  const onSubmit:SubmitHandler<IFormValues> = (data:IFormValues) => {console.log(JSON.stringify(data))};
+  const onSubmit:SubmitHandler<IFormValues> = async (data:IFormValues) => {
+    try {
+      const res = await axios.post("/api/login", data);
+      if(res.data.userId) {
+        setUserId(res.data.userId);
+      }
+      //console.log("senha na hora do login no front", data.password)
+      router.push("/user");
+    } catch (err) {
+      console.log("Erro ao fazer o login", err);
+      alert("Credenciais inválidas!");
+    };
+  };
   
   return (
     <div className="flex rounded-lg w-9/10 md:w-7/10 lg:w-3/5 h-7/10 bg-gray-900 lg:justify-between min-h-80">

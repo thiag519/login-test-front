@@ -6,8 +6,6 @@ type Props = {
 }
 export const UserAreaPosts = (user:Props) => {
   
-
-  user.user
   return (
     <div
       className="w-full md:w-1/2 h-9/10 my-3 flex flex-col items-center justify-center 

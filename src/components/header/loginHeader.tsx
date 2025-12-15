@@ -1,6 +1,5 @@
 "use client";
 
-import { Avatar } from "@/components/avatar";
 import { MenuLine } from "./menu-line";
 
 const LoginHeader = () => {

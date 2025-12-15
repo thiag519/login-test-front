@@ -9,7 +9,7 @@ export const FeedAreaPosts = ({users}:Props) => {
   
   return (
     <div
-      className="w-full md:w-1/2 h-9/10 my-3 flex flex-col items-center justify-center 
+      className="w-full md:w-1/2 h-9/10 min-h-170 my-3 flex flex-col items-center justify-center 
       scroll-m-0"
     ><div
         style={{
@@ -17,13 +17,9 @@ export const FeedAreaPosts = ({users}:Props) => {
         }}
         className="w-full h-full overflow-y-scroll flex flex-col items-center"
       >
-      {users?.map((user) => (
-        <UserPost
-          key={user.id}
-          users={user}
-        />
-        )) 
-      }
+        {users?.map((user) => (
+          <UserPost key={user.id} users={user} />
+        ))}
       </div>
     </div>
   );
