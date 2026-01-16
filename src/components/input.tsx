@@ -4,9 +4,9 @@ import { useState } from "react";
 import { Path, UseFormRegister } from "react-hook-form";
 
 export interface IFormValues {
-  name:string;
-  email:string;
-  password:string;
+  name?:string;
+  email?:string;
+  password?:string;
   title?: string;
   content?:string; 
 }

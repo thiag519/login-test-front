@@ -6,4 +6,5 @@ export type PostType = {
   reactDown:number;
   userId:number;
   createdAt: Date;
+  name:string
 }

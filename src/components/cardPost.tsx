@@ -4,25 +4,26 @@ import { useEffect, useState } from "react";
 import { PostsAreaType } from "@/types/postsAreaType";
 import { getPosts } from "@/data/public/getPosts";
 import { PostType } from "@/types/postType";
+import { Avatar } from "./avatar";
+import { UsersAreaType } from "@/types/usersAreaType";
+import { getUsers } from "@/data/public/getUsers";
 
 type Props = {
   author:number;
   name:string;
 }
+//{ author, name}:Props
+export const CardPost = () => {
 
-export const CardPost = ({ author, name}:Props) => {
   const [postsI, setPostsI]= useState<PostsAreaType | null>(null);
-    
-    useEffect(()=> {getPosts().then(setPostsI).catch(console.error)},[]);
-    if(!postsI) {
-      
-      return null;
-    };
-    const post = postsI.posts;
-    const postUser: PostType[] = post.filter(e =>e.userId === author);
+
+  useEffect(()=> {getPosts().then(setPostsI).catch(console.error)},[]);
+
+  const post: PostType[] | undefined = postsI?.posts;
+
   return (
     <div className="w-full flex items-center justify-center flex-col">
-      <Post userPosts={postUser} name={name} />
+      <Post userPosts={post} />
     </div>
   );
 }

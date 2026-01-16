@@ -8,7 +8,7 @@ type Props = {
   onClick: () => void;
 };
 
-export const ButtonCreatePost = ({img,text,onClick}:Props) => {
+export const ButtonPost = ({img,text,onClick}:Props) => {
   return (
     <button
       onClick={() => onClick() }

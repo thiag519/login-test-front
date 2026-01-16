@@ -6,10 +6,12 @@ import { CardPost } from "./cardPost";
 type Props = {
   users: UserType;
 }
-export const UserPost = ({users}:Props) => {
+//{users}:Props
+export const UserPost = () => {
   return (
     <div className="w-full flex items-center justify-center ">
-      <CardPost author={users.id} name={users.name}  />
+      <CardPost   />
     </div>
   );
 } 
+//author={users.id} name={users.name}

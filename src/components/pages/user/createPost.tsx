@@ -5,23 +5,40 @@ import { useActive } from "@/components/hooks/useActive";
 import { IFormValues, Input } from "@/components/input";
 import { SubmitHandler, useForm } from "react-hook-form";
 import imgPlus from "../../../../public/images/icons8-plus-24.png";
-import { ButtonCreatePost } from "./buttonCreatePost";
+import { ButtonPost } from "./buttonPost";
 import { TextArea } from "@/components/textArea";
+import { useIdUser } from "@/components/hooks/useIdUser";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { NewPostType } from "@/types/newPostType";
 
-export const CreatePost = () => {
+type Props = {
+  userId: number | null;
+}
+
+export const CreatePost = (userId: Props) => {
   const {active, toggleActive} = useActive();
+  const router = useRouter();
+  //const {userId, setUserId} = useIdUser()
 
-  const {register, handleSubmit,formState:{errors}, reset} = useForm<IFormValues>();
+  const {register, handleSubmit, reset} = useForm<IFormValues>();
   
     const onSubmit:SubmitHandler<IFormValues> = async (data:IFormValues) => {
-      console.log(data);
-      //console.log(JSON.stringify(data));
-      //const result = await createUser(data as RegisterType);
-      /*console.log("Result no cadastro: ",result.userData);
-      if(result.success){
-        reset();
-        router.push("/login");
-      };*/
+      //console.log(data);
+      //console.log(userId)
+      const title = data.title;
+      const content = data.content;
+      const post = { title, content };
+      //console.log(title, content, post)
+      try {
+        const res = await axios.post(`/api/proxy/private/post/${userId.userId}`, post);
+        console.log(res.status)
+        toggleActive();
+        reset()
+      } catch (err) {
+        console.log("Erro ao fazer o login", err);
+        alert("Credenciais inválidas!");
+      }
     };
   return (
     <div
@@ -40,7 +57,7 @@ export const CreatePost = () => {
             <div 
               className="right-0 top-0 p-2 mt-3 absolute cursor-pointer hover:bg-gray-500/25 rounded-full  
               mr-3 rotate-45">
-              <ButtonCreatePost text="" img={imgPlus} onClick={toggleActive} />
+              <ButtonPost text="" img={imgPlus} onClick={toggleActive} />
             </div>
           
         </div>
@@ -70,7 +87,6 @@ export const CreatePost = () => {
               name="Enviar"
               color="gray"
               onClick={() => {
-                handleSubmit(onSubmit);
               }}
             />
           </div>

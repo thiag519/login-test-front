@@ -24,8 +24,10 @@ export const FeedArea = () => {
       >
         anucios
       </div>
-      <FeedAreaPosts users={user} />
+      <FeedAreaPosts />
       <FeedAreaSidebar users={user} />
     </div>
   );
 }
+
+//users={user} 

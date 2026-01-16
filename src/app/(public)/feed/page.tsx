@@ -5,7 +5,7 @@ import { Footer } from "@/components/pages/feed/footer";
 export default function Home() {
   return (
     <div
-      className="flex min-h-screen items-center flex-col 
+      className="flex w-full h-screen items-center flex-col justify-between
      text-white overflow-hidden"
     >
       <FeedArea />
