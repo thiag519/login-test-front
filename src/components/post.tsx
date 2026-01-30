@@ -5,11 +5,9 @@ import { Avatar } from "./avatar";
 import { Button } from "./button";
 import { PostArea } from "./postArea";
 import { PostType } from "@/types/postType";
-import { useEffect, useState } from "react";
-import { UsersAreaType } from "@/types/usersAreaType";
-import { getUsers } from "@/data/public/getUsers";
-import { FeedAreaCarrying } from "./carrying/feedAreaCarrying";
-import { count } from "console";
+import { useState } from "react";
+import { useIdUser } from "./hooks/useIdUser";
+
 
 
 type Props = {
@@ -19,40 +17,44 @@ type Props = {
 export const Post = ({userPosts}:Props) => {
   const[voteUp, setVoteUp] = useState(0);
   const[voteDown, setVoteDown] = useState(0);
-
-
+  const {userId, setUserId} = useIdUser();
+  //console.log(userId);
   const handleVoteUpButton = async (postId: number) => {
-    console.log(postId);
     try {
-      const res = await axios.patch(`/api/proxy/private/post/voteUp/${postId}`);
-      setVoteUp(voteUp + 1);
-      //console.log(res.status);
+      if(userId) {
+        const res = await axios.patch(`/api/proxy/private/post/voteUp/${postId}`);
+        setVoteUp(voteUp + 1);
+        //console.log(res.status);
+      }else {
+        alert("Você precisa estar logado para votar!");
+      } 
     } catch (err) {
+      if(!userId) {
+        alert("Você precisa estar logado para votar!");    
+      }
       console.log("Erro ao votar", err);
-      alert("Erro ao votar!");
+      alert("Você já votou nesse post!");
     }
   };
+  
   const handleVoteDownButton = async (postId: number) => {
     try {
-      const res = await axios.patch(`/api/proxy/private/post/voteDown/${postId}`);
-      setVoteDown(voteDown + 1);
-      //console.log(res.status);
+      if(userId) {
+        const res = await axios.patch(`/api/proxy/private/post/voteDown/${postId}`);
+        setVoteDown(voteDown + 1);
+        //console.log(res.status);
+      }else {
+        alert("Você precisa estar logado para votar!");
+      }
     } catch (err) {
+      if (!userId) {
+        alert("Você precisa estar logado para votar!");
+      }
       console.log("Erro ao votar", err);
-      alert("Erro ao votar!");
+      alert("Você já votou nesse post!");
     }
   };
 
-  const [users, setUsers]= useState<UsersAreaType | null>(null);
-    useEffect(()=> {getUsers().then(setUsers).catch(console.error)},[]);
-    if(!users) {
-
-      return <FeedAreaCarrying />;
-    }
-    const user = users.users; 
-
-  
-  //console.log(userPosts?.filter(post => post.id ));
   return (
     <>
       {!userPosts && (

@@ -7,7 +7,7 @@ import { UserArea } from "@/components/pages/user/userArea";
 
 const Page = () => {
   const {active, toggleActive} = useActive();
-  const {userId, setUserId} = useIdUser()
+  const {userId, setUserId} = useIdUser();
   
   return (
     <div

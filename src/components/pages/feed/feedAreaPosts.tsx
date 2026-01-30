@@ -1,11 +1,5 @@
-import { UserPost } from "@/components/userPoat";
-import { UserType } from "@/types/userType";
+import { CardPost } from "@/components/cardPost";
 
-type Props = {
-  users: UserType[]
-}
-
-//{users}:Props
 export const FeedAreaPosts = () => {
   
   return (
@@ -17,10 +11,8 @@ export const FeedAreaPosts = () => {
           scrollbarWidth: "none",
         }}
         className="w-full h-full overflow-y-scroll flex flex-col items-center"
-      ><UserPost  />
+      ><CardPost  />
       </div>
     </div>
   );
 };
-
-//key={user.id} users={user}
