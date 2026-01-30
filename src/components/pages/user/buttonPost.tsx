@@ -12,10 +12,10 @@ export const ButtonPost = ({img,text,onClick}:Props) => {
   return (
     <button
       onClick={() => onClick() }
-      className="w-auto flex items-center justify-between"
+      className="w-auto flex items-center justify-between gap-3 hover:text-white"
     >
       <Image
-        className="h-8 cursor-pointer i"
+        className="h-8 cursor-pointer "
         src={img}
         width={32}
         height={32}

@@ -1,9 +1,15 @@
 "use client"
 
+import axios from "axios";
 import { Avatar } from "./avatar";
 import { Button } from "./button";
 import { PostArea } from "./postArea";
 import { PostType } from "@/types/postType";
+import { useEffect, useState } from "react";
+import { UsersAreaType } from "@/types/usersAreaType";
+import { getUsers } from "@/data/public/getUsers";
+import { FeedAreaCarrying } from "./carrying/feedAreaCarrying";
+import { count } from "console";
 
 
 type Props = {
@@ -11,10 +17,42 @@ type Props = {
 };
 
 export const Post = ({userPosts}:Props) => {
-  const handleVoteUpButton = () => {};
-  const handleVoteDownButton = () => {};
+  const[voteUp, setVoteUp] = useState(0);
+  const[voteDown, setVoteDown] = useState(0);
+
+
+  const handleVoteUpButton = async (postId: number) => {
+    console.log(postId);
+    try {
+      const res = await axios.patch(`/api/proxy/private/post/voteUp/${postId}`);
+      setVoteUp(voteUp + 1);
+      //console.log(res.status);
+    } catch (err) {
+      console.log("Erro ao votar", err);
+      alert("Erro ao votar!");
+    }
+  };
+  const handleVoteDownButton = async (postId: number) => {
+    try {
+      const res = await axios.patch(`/api/proxy/private/post/voteDown/${postId}`);
+      setVoteDown(voteDown + 1);
+      //console.log(res.status);
+    } catch (err) {
+      console.log("Erro ao votar", err);
+      alert("Erro ao votar!");
+    }
+  };
+
+  const [users, setUsers]= useState<UsersAreaType | null>(null);
+    useEffect(()=> {getUsers().then(setUsers).catch(console.error)},[]);
+    if(!users) {
+
+      return <FeedAreaCarrying />;
+    }
+    const user = users.users; 
+
   
-  console.log(userPosts)
+  //console.log(userPosts?.filter(post => post.id ));
   return (
     <>
       {!userPosts && (
@@ -35,7 +73,7 @@ export const Post = ({userPosts}:Props) => {
       )}
       {userPosts?.map(
         (post) => (
-          console.log(post),
+          //console.log(post),
           (
             <div
               key={post.id}
@@ -46,8 +84,8 @@ export const Post = ({userPosts}:Props) => {
                 flex flex-col p-6"
               >
                 <div className="w-full flex items-center justify-around gap-10 border-b border-gray-400 p-3">
-                  <Avatar name={post.name} />
-                  <p className="text-xl text-gray-400">{post.name}</p>
+                  <Avatar name={post.author.name} />
+                  <p className="text-xl text-gray-400">{post.author.name}</p>
                 </div>
                 <PostArea
                   titlePost={` ${post.title}`}
@@ -59,16 +97,16 @@ export const Post = ({userPosts}:Props) => {
               </div>
               <div className="w-full h-auto flex items-center justify-between py-2 ">
                 <Button
-                  name={`${post.reactUp} Up`}
+                  name={`${post.reactUp + voteUp} Up`}
                   size={40}
                   color="SteelBlue"
-                  onClick={handleVoteUpButton}
+                  onClick={() => handleVoteUpButton(post.id)}
                 />
                 <Button
-                  name={`${post.reactDown} Down`}
+                  name={`${post.reactDown + voteDown} Down`}
                   size={40}
                   color="Tomato"
-                  onClick={handleVoteDownButton}
+                  onClick={() => handleVoteDownButton(post.id)}
                 />
               </div>
             </div>

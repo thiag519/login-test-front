@@ -10,7 +10,7 @@ export const FeedAreaPosts = () => {
   
   return (
     <div
-      className="w-full md:w-1/2 min-h-170 my-3 flex flex-col items-center justify-center 
+      className="w-full md:w-1/2 h-[90vh] my-3 flex flex-col items-center justify-center overflow-hidden
       scroll-m-0"
     ><div
         style={{

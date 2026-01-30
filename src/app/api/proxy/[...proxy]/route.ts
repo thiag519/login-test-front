@@ -6,18 +6,28 @@ export const proxyRequest = async (req: NextRequest,proxy: string[] , method: st
   try {
     const token = req.cookies.get("token" )?.value;
 
-    const backendUrl = await `http://localhost:3001/${proxy.join('/')}`;
+    const backendUrl =  `http://localhost:3001/${proxy.join('/')}`;
 
-    console.log("URL: ",backendUrl);
+    //console.log("URL: ",backendUrl);
 
     const httpMethod = method.toUpperCase();
+    //console.log("Method: ",httpMethod);
 
-    const body = httpMethod !== "GET" ? await req.json()  : undefined;
+    let body:any= undefined;
+
+    const contetLength = req.headers.get("content-length");
+
+    if (method !== "GET" && contetLength && contetLength !== "0" ) {
+      body = await req.json()
+    } 
+
+    //const body = httpMethod !== "GET" ? await req.json()  : undefined;
 
     const response = await fetch(backendUrl, {
       method: httpMethod,
       headers:{
-        "Content-Type": "application/json",
+       // "Content-Type": "application/json",
+        ...(body && {"Content-Type": "application/json"}),
         ...(token && {Authorization: `Bearer ${token}`}),
       },
       body: body? JSON.stringify(body) : undefined,
@@ -25,9 +35,10 @@ export const proxyRequest = async (req: NextRequest,proxy: string[] , method: st
     const data = await response.json();
     return NextResponse.json(data, {status: response.status});
   } catch (error: any) {
+    console.error("Proxy request error:", error);
     return NextResponse.json(
-      { message: error.response?.data || "Erro na requisição" },
-      { status: error.response?.status || 500 }
+      { message: "Erro na requisição" },
+      { status: 500 }
     );
   }
 };
@@ -37,7 +48,7 @@ export async function GET(
   context: {params: Promise<{proxy: string[]}>}
 ) {
   const {proxy} = await context.params;
-  return proxyRequest(req, proxy, "GET")
+  return await proxyRequest(req, proxy, "GET")
 }
 
 export async function POST(
@@ -50,10 +61,10 @@ export async function POST(
 
 export async function PUT(
   req:NextRequest,
-  context:{ params: {proxy: string[]}}
+  context:{ params: Promise<{proxy: string[]}>}
 ) {
   const {proxy} = await context.params;
-  return proxyRequest(req, proxy, "PUT")
+  return await proxyRequest(req, proxy, "PUT")
 }
 
 export async function DELETE(
@@ -61,5 +72,13 @@ export async function DELETE(
   context:{ params: Promise<{proxy: string[]}>}
 ) {
   const {proxy} = await context.params
-  return proxyRequest(req,proxy, "DELETE")
+  return await proxyRequest(req, proxy, "DELETE")
+}
+
+export async function PATCH(
+  req:NextRequest,
+  context:{ params: Promise<{proxy: string[]}>}
+) {
+  const {proxy} = await context.params
+  return await proxyRequest(req, proxy, "PATCH")
 }

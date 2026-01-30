@@ -22,8 +22,7 @@ export const UserAreaPosts = (user:Props) => {
             name={u.name}
             author={u.id}
           />
-        ))
-        }
+        ))}
       </div>
     </div>
   );

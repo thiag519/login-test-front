@@ -1,11 +1,12 @@
 import { Avatar } from "@/components/avatar";
 import { UserType } from "@/types/userType";
+import { setFullName } from "@/utils/setFullName";
 
 type Props = {
   users:UserType[];
 }
 export const FeedAreaSidebar = (users:Props) => {
-  
+  //const fullName = setFullName()
   return (
     <div
       className="w-0 hidden min-h-160 md:flex flex-col bg-gray-900 my-5 mx-3 rounded-s-sm md:w-1/4 
@@ -15,7 +16,7 @@ export const FeedAreaSidebar = (users:Props) => {
       <div key={user.id} className="flex w-full px-3 gap-3 border-b border-gray-400">
         <Avatar name={user.name} />
         <p className="text-lg flex items-center h-13  ">
-          {user.name}
+          {setFullName(user.name)}
         </p>
       </div>
     ))

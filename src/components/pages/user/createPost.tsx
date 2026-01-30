@@ -7,10 +7,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import imgPlus from "../../../../public/images/icons8-plus-24.png";
 import { ButtonPost } from "./buttonPost";
 import { TextArea } from "@/components/textArea";
-import { useIdUser } from "@/components/hooks/useIdUser";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { NewPostType } from "@/types/newPostType";
+import { refresh } from "next/cache";
 
 type Props = {
   userId: number | null;
@@ -19,27 +18,26 @@ type Props = {
 export const CreatePost = (userId: Props) => {
   const {active, toggleActive} = useActive();
   const router = useRouter();
-  //const {userId, setUserId} = useIdUser()
-
   const {register, handleSubmit, reset} = useForm<IFormValues>();
   
-    const onSubmit:SubmitHandler<IFormValues> = async (data:IFormValues) => {
-      //console.log(data);
-      //console.log(userId)
-      const title = data.title;
-      const content = data.content;
-      const post = { title, content };
-      //console.log(title, content, post)
-      try {
-        const res = await axios.post(`/api/proxy/private/post/${userId.userId}`, post);
-        console.log(res.status)
-        toggleActive();
-        reset()
-      } catch (err) {
-        console.log("Erro ao fazer o login", err);
-        alert("Credenciais inválidas!");
-      }
-    };
+  const onSubmit:SubmitHandler<IFormValues> = async (data:IFormValues) => {
+    //console.log(data);
+    const title = data.title;
+    const content = data.content;
+    const post = { title, content };
+    //console.log(title, content, post)
+    try {
+      const res = await axios.post(`/api/proxy/private/post/${userId.userId}`, post);
+      console.log(res.status)
+      toggleActive();
+      reset();
+      refresh();
+    } catch (err) {
+      console.log("Erro ao fazer o login", err);
+      alert("Credenciais inválidas!");
+    }
+  };
+
   return (
     <div
       className={`items-center justify-center w-full h-full min-h-150 absolute 
@@ -53,13 +51,11 @@ export const CreatePost = (userId: Props) => {
           <h1 className="text-3xl text-gray-400">
             Crie sua proposta!
           </h1>
-            
-            <div 
-              className="right-0 top-0 p-2 mt-3 absolute cursor-pointer hover:bg-gray-500/25 rounded-full  
-              mr-3 rotate-45">
-              <ButtonPost text="" img={imgPlus} onClick={toggleActive} />
-            </div>
-          
+          <div 
+            className="right-0 top-0 p-2 mt-3 absolute cursor-pointer hover:bg-gray-500/25 rounded-full  
+            mr-3 rotate-45">
+            <ButtonPost text="" img={imgPlus} onClick={toggleActive} />
+          </div>
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
