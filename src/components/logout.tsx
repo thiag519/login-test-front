@@ -7,7 +7,7 @@ export const Logout = () => {
   const router = useRouter()
   const handleLogout = async () => {
     await fetch("/api/logout", { method: "POST" });
-    router.push("/login");
+    router.push("/feed");
   };
   return (
     <div>

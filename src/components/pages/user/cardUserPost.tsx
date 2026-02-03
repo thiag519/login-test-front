@@ -6,10 +6,9 @@ import { Post } from "@/components/post";
 
 type Props = {
   author:number;
-  name:string;
 }
 
-export const CardUser = ({ author, name}:Props) => {
+export const CardUser = ({ author}:Props) => {
 
   const [postsI, setPostsI]= useState<PostsAreaType | null>(null);
     
@@ -21,7 +20,6 @@ export const CardUser = ({ author, name}:Props) => {
   return (
     <div className="w-full flex items-center justify-center flex-col">
       <Post
-        name={name}
         userPosts={postUser}
       />
     </div>

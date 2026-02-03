@@ -1,22 +1,22 @@
 "use client"
 
 import { Button } from "@/components/button";
-import { useActive } from "@/components/hooks/useActive";
+import { useActiveOpenModal } from "@/components/hooks/useActiveCreatePost";
 import { IFormValues, Input } from "@/components/input";
 import { SubmitHandler, useForm } from "react-hook-form";
 import imgPlus from "../../../../public/images/icons8-plus-24.png";
-import { ButtonPost } from "./buttonPost";
 import { TextArea } from "@/components/textArea";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { refresh } from "next/cache";
+import Image from "next/image";
 
 type Props = {
   userId: number | null;
 }
 
 export const CreatePost = (userId: Props) => {
-  const {active, toggleActive} = useActive();
+  const {active, toggleActive} = useActiveOpenModal();
   const router = useRouter();
   const {register, handleSubmit, reset} = useForm<IFormValues>();
   
@@ -54,7 +54,9 @@ export const CreatePost = (userId: Props) => {
           <div 
             className="right-0 top-0 p-2 mt-3 absolute cursor-pointer hover:bg-gray-500/25 rounded-full  
             mr-3 rotate-45">
-            <ButtonPost text="" img={imgPlus} onClick={toggleActive} />
+            <div className="w-6 h-6  rounded-full" onClick={toggleActive}>
+              <Image src={imgPlus} alt="Mais" width={24} height={24}></Image>
+            </div>
           </div>
         </div>
         <form

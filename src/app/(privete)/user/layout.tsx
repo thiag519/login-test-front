@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../../globals.css";
 import UserHeader from "@/components/header/userHeader";
-import { ActiveProvider } from "@/components/contexts/activeContext";
+import { ActiveProvider } from "@/components/contexts/activeModalCreatPostContext";
 import { UserIdProvider } from "@/components/contexts/userIdContext";
+import { ActiveShowPostsDownProvider } from "@/components/contexts/activeShowPostsDownStoryContext";
+import { ActiveShowPostsUpProvider } from "@/components/contexts/activeShowPostsUpStoryContext";
+import { ActiveMenuProvider } from "@/components/contexts/activeToggleMenu";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,9 +34,16 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <UserIdProvider>
-          <UserHeader />
+          
           <ActiveProvider>
+          <ActiveShowPostsDownProvider>
+          <ActiveShowPostsUpProvider>
+          <ActiveMenuProvider>
+            <UserHeader />
             {children}
+          </ActiveMenuProvider>
+          </ActiveShowPostsUpProvider>
+          </ActiveShowPostsDownProvider>
           </ActiveProvider>
         </UserIdProvider>
       

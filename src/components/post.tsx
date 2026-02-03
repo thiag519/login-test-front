@@ -11,14 +11,14 @@ import { useIdUser } from "./hooks/useIdUser";
 
 
 type Props = {
- userPosts: PostType[]|undefined ;
+ userPosts: PostType[] |  null | undefined;
 };
 
 export const Post = ({userPosts}:Props) => {
   const[voteUp, setVoteUp] = useState(0);
   const[voteDown, setVoteDown] = useState(0);
   const {userId, setUserId} = useIdUser();
-  //console.log(userId);
+
   const handleVoteUpButton = async (postId: number) => {
     try {
       if(userId) {

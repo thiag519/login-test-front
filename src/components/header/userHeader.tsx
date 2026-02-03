@@ -1,16 +1,17 @@
 "use client";
 
 import { Avatar } from "@/components/avatar";
-import { Logout } from "../logout";
 import { useEffect, useState } from "react";
 import { UsersAreaType } from "@/types/usersAreaType";
 import { getUsers } from "@/data/public/getUsers";
 import { useIdUser } from "../hooks/useIdUser";
+import { MenuLine } from "../pages/user/menu-line";
+import { useActiveMenu } from "../hooks/useActiveMenu";
 
 const UserHeader = () => {
   const {userId, setUserId} =useIdUser();
+  const {activeMenu, toggleActiveMenu} = useActiveMenu();
   const[name, setName] = useState<string | undefined>('');
-
   const [users, setUsers]= useState<UsersAreaType | null>(null);
 
   useEffect(()=> {getUsers().then(setUsers).catch(console.error)},[]);
@@ -26,11 +27,13 @@ const UserHeader = () => {
         <div className="text-3xl text-gray-400">
          Logo
         </div>
-        <div className="h-full w-full flex items-center justify-end gap-3 ">
+        <div className="h-full w-full flex items-center justify-end gap-10">
           <div className="h-full ">
             <Avatar name={user?.name} />   
           </div>
-           <Logout/>
+          <div className="h-16 w-0 flex items-center justify-center">
+            <MenuLine/>
+          </div> 
         </div>
       </div>
     </header>

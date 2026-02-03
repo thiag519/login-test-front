@@ -13,12 +13,11 @@ export const ButtonPost = ({img,text,onClick}:Props) => {
     <button
       onClick={() => onClick() }
       className="w-auto flex items-center justify-between gap-3 hover:text-white"
-    >
-      <Image
-        className="h-8 cursor-pointer "
+    ><Image
+        className="h-6 cursor-pointer "
         src={img}
-        width={32}
-        height={32}
+        width={22}
+        height={22}
         alt="adicionar"
         sizes=""
       />

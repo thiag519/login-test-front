@@ -1,6 +1,6 @@
 
 import { UserType } from "@/types/userType";
-import { CardUser } from "./cardUser";
+import { CardUser } from "./cardUserPost";
 type Props = {
   user: UserType[];
 }
@@ -8,7 +8,7 @@ export const UserAreaPosts = (user:Props) => {
   
   return (
     <div
-      className="w-full md:w-1/2 h-9/10 my-3 flex flex-col items-center justify-center 
+      className="w-full md:w-1/2 h-9/10 my-13 flex flex-col items-center justify-center 
       scroll-m-0"
     ><div
         style={{
@@ -19,7 +19,6 @@ export const UserAreaPosts = (user:Props) => {
         {user.user.map(u => (
           <CardUser
             key={u.id}
-            name={u.name}
             author={u.id}
           />
         ))}

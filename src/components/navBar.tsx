@@ -5,25 +5,28 @@ import imgUp from '../../public/images/up.png';
 import imgDown from "../../public/images/down.png";
 import imgArrow from "../../public/images/icons8-arrow-50.png";
 import { ButtonPost } from "./pages/user/buttonPost";
-import { useActive } from './hooks/useActive';
+import { useActiveOpenModal } from './hooks/useActiveCreatePost';
 import Link from 'next/link';
+import { useActiveShowPostsUp } from './hooks/useActiveShowPostsUp';
+import { useActiveShowPostsDown } from './hooks/useActiveShowPostsDown';
+import { useActiveMenu } from './hooks/useActiveMenu';
 
 
 export const NavBar = () => {
-  const {active, toggleActive} = useActive()
+  const {active, toggleActive} = useActiveOpenModal();
+  const {activeMenu, toggleActiveMenu} = useActiveMenu();
+  const {activePostsUpStory, toggleActivePostsUpStory} = useActiveShowPostsUp();
+  const {activePostsDownStory, toggleActivePostsDownStory } = useActiveShowPostsDown();
+
   return (
     <div
-      className="w-full md:hidden flex items-center justify-center h-13 bg-gray-900 rounded-t-sm border-t
-      border-gray-400 
-    bottom-0 fixed"
-    >
-      <div
-        className=" flex w-4/5 h-full rounded-full p-3 
-        items-center justify-around"
-      ><ButtonPost img={imgPlus} text=""onClick={toggleActive}/>
-        <ButtonPost img={imgUp} text="" onClick={() => {}} />
-        <ButtonPost img={imgDown} text="" onClick={() => {}} />
-        <Link className='' href={'/feed'}><ButtonPost img={imgArrow} text="" onClick={() => {}} /></Link>
+      className="w-full h-auto flex items-center justify-start rounded-t-sm "
+    ><div
+        className="flex h-full flex-col rounded-full text-sm gap-10 items-start text-gray-300 justify-around"
+      ><ButtonPost img={imgPlus} text="Criar Post"onClick={() => {toggleActive(); toggleActiveMenu();}}/>
+        <ButtonPost img={imgUp} text="Historico de votos positivos" onClick={() => {toggleActivePostsUpStory(); toggleActiveMenu();}} />
+        <ButtonPost img={imgDown} text="Historico de votos negativos" onClick={() => {toggleActivePostsDownStory(); toggleActiveMenu();}} />
+        <Link className='' href={'/feed'}><ButtonPost img={imgArrow} text="Voltar" onClick={() => {toggleActiveMenu();}} /></Link>
       </div>
     </div>
   );
