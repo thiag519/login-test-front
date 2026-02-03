@@ -17,7 +17,7 @@ export const AreaStoryVoteDown = ({userId}: Props) => {
       <h2 className="text-xl text-gray-400">Área de Votação Down</h2>
       <span
         onClick={toggleActivePostsDownStory}
-        className="absolute right-4 top-4 text-gray-500 text-3xl cursor-pointer hover:text-white"
+        className="absolute right-4 top-4 rotate-45 text-gray-500 text-3xl cursor-pointer hover:text-white"
       >
         <Image src={imgPlus} alt="Mais" width={24} height={24}></Image>
       </span>

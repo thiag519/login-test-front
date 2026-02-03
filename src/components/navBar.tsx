@@ -20,13 +20,13 @@ export const NavBar = () => {
 
   return (
     <div
-      className="w-full h-auto flex items-center justify-start rounded-t-sm "
+      className="w-full h-auto text-start flex items-start justify-start rounded-t-sm "
     ><div
-        className="flex h-full flex-col rounded-full text-sm gap-10 items-start text-gray-300 justify-around"
+        className="flex h-full flex-col  rounded-full text-sm gap-10  text-gray-400 "
       ><ButtonPost img={imgPlus} text="Criar Post"onClick={() => {toggleActive(); toggleActiveMenu();}}/>
         <ButtonPost img={imgUp} text="Historico de votos positivos" onClick={() => {toggleActivePostsUpStory(); toggleActiveMenu();}} />
         <ButtonPost img={imgDown} text="Historico de votos negativos" onClick={() => {toggleActivePostsDownStory(); toggleActiveMenu();}} />
-        <Link className='' href={'/feed'}><ButtonPost img={imgArrow} text="Voltar" onClick={() => {toggleActiveMenu();}} /></Link>
+        <Link className='flex w-full' href={'/feed'}><ButtonPost img={imgArrow} text="Voltar" onClick={() => {toggleActiveMenu();}} /></Link>
       </div>
     </div>
   );

@@ -12,7 +12,8 @@ export const ButtonPost = ({img,text,onClick}:Props) => {
   return (
     <button
       onClick={() => onClick() }
-      className="w-auto flex items-center justify-between gap-3 hover:text-white"
+      className="w-full text-start flex items-center justify-start gap-3 hover:text-white
+      border-b-2 border-transparent hover:border-white pb-1"
     ><Image
         className="h-6 cursor-pointer "
         src={img}

@@ -1,6 +1,5 @@
 
 import { useRouter } from "next/navigation";
-import { Button } from "./button";
 
 
 export const Logout = () => {
@@ -10,13 +9,14 @@ export const Logout = () => {
     router.push("/feed");
   };
   return (
-    <div>
-      <Button
-        color="gray"
-        size={100}
+    <div className="w-[87%] h-auto pl-9 border-b-2 border-transparent hover:border-white pb-1">
+      <button
+        className="w-full text-start text-gray-400 text-sm hover:text-white "
         onClick={handleLogout}
         name="Sair"
-      />
+      >
+        Sair
+      </button>
     </div>
-  )
+  );
 }
