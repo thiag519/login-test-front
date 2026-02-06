@@ -8,18 +8,21 @@ import imgPlus from "../../../../public/images/icons8-plus-24.png";
 import { TextArea } from "@/components/textArea";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { refresh } from "next/cache";
 import Image from "next/image";
 
 type Props = {
   userId: number | null;
 }
 
-export const CreatePost = (userId: Props) => {
+export const CreatePost = ({userId}: Props) => {
+
   const {active, toggleActive} = useActiveOpenModal();
-  const router = useRouter();
   const {register, handleSubmit, reset} = useForm<IFormValues>();
-  
+  const router = useRouter();
+  console.log(userId)
+  if(userId === null) {
+    return <div className="w-full h-full">Carregando...</div>;
+  }
   const onSubmit:SubmitHandler<IFormValues> = async (data:IFormValues) => {
     //console.log(data);
     const title = data.title;
@@ -27,14 +30,21 @@ export const CreatePost = (userId: Props) => {
     const post = { title, content };
     //console.log(title, content, post)
     try {
-      const res = await axios.post(`/api/proxy/private/post/${userId.userId}`, post);
+      const res = await axios.post(`/api/proxy/private/post/${userId}`, post);
       console.log(res.status)
-      toggleActive();
-      reset();
-      refresh();
-    } catch (err) {
-      console.log("Erro ao fazer o login", err);
-      alert("Credenciais inválidas!");
+      
+      if(res.status === 201) {
+        router.push("/user");
+        toggleActive();
+        reset();
+        
+      } else {
+        router.push('/feed')
+        alert("Erro ao criar o post!");
+      }
+    } catch (error) {
+      console.error("Erro ao criar o post:", error);
+      alert("Erro ao criar o post!"); 
     }
   };
 
@@ -54,17 +64,15 @@ export const CreatePost = (userId: Props) => {
           <div 
             className="right-0 top-0 p-2 mt-3 absolute cursor-pointer hover:bg-gray-500/25 rounded-full  
             mr-3 rotate-45">
-            <div className="w-6 h-6  rounded-full" onClick={toggleActive}>
+            <div className="w-6 h-6 rounded-full" onClick={toggleActive}>
               <Image src={imgPlus} alt="Mais" width={24} height={24}></Image>
             </div>
           </div>
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="gap-3 p-4 flex-col w-full h-2/3  flex items-center justify-around"
-        >
+          className="gap-3 p-4 flex-col w-full h-2/3  flex items-center justify-around">
           <div className="text-sm h-1/3 text-gray-400 w-9/10 md:w-3/5 max-w-300">
-  
             <Input
               type="text"
               label="title"
@@ -81,7 +89,8 @@ export const CreatePost = (userId: Props) => {
           </div>
           <div className="w-full h-1/4 flex items-center justify-center">
             <Button
-              size={30}
+              width={30}
+              height={10}
               name="Enviar"
               color="gray"
               onClick={() => {

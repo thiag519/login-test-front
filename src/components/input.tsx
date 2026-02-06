@@ -31,6 +31,8 @@ export const Input = ({placeholder,type,label, register}:Props) => {
         className={`w-full text-start min-h-12 max-h-13 text-sm 
         text-gray-400  border bg-gray-800/30 border-gray-600 rounded-xl px-5 shadow-2xl 
         hover:bg-gray-800 hover:border-gray-800 outline-0`}
+        minLength={5}
+        maxLength={20}
         type={type}
         {...register(label)}
         placeholder={placeholder}

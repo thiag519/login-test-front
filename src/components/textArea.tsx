@@ -24,6 +24,8 @@ export const TextArea = ({placeholder,label, register}:Props) => {
          border bg-gray-800/30 border-gray-600 rounded-xl px-5 shadow-2xl 
         hover:bg-gray-800 hover:border-gray-800 outline-0`}
         {...register(label)}
+        minLength={10}
+        maxLength={300}
         placeholder={placeholder}
         required
         autoComplete="off"

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { ButtonPost } from "../pages/user/buttonPost";
 import  imgArrow  from "../../../public/images/icons8-arrow-50.png";
 import Image from "next/image";
 

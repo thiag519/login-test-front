@@ -19,21 +19,24 @@ export const UserIdProvider = ({children}:{children:ReactNode}) => {
       try {
         const res = await fetch("/api/me");
         const data = await res.json();
-
-        if(data.authenticated) {
+        if(res.ok) {
+          if(data.authenticated) {
+            //console.log("User ID no UserIdContext: ", data.userId);
           setUserId(data.userId);
-        }else {
-          setUserId(null);
+          }else {
+            setUserId(null);
+          }
         }
+        
       } catch (error) {
-        setUserId(null);
+        //setUserId(null);
       } finally {
         setLoading(false);
       }
     };
     loadUser();
   }, []);
-
+  //console.log("User ID ainda no UserIdContext:", userId);
   return (
     <UserIdContext.Provider value={{userId, loading ,setUserId}}>
       {children}

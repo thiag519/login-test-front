@@ -7,21 +7,17 @@ import Link from "next/link";
 import { searchUserName } from "@/data/public/searchUserName";
 import { SearchUserNameType } from "@/types/searchUserNameType";
 import { useIdUser } from "../hooks/useIdUser";
-import { UsersAreaType } from "@/types/usersAreaType";
-import { getUsers } from "@/data/public/getUsers";
+import axios from "axios";
+import { PostType } from "@/types/postType";
 
-const Header = () => {
-  const {userId, setUserId} = useIdUser()
+const Header = () => { 
+  const {userId, setUserId} =  useIdUser();
+
   const [search, setSearch ] = useState<SearchUserNameType | null>(null);
-  const [users, setUsers]= useState<UsersAreaType | null>(null);
   const [value, setValue] = useState('');
-   
+
   useEffect(()=> {searchUserName(value).then(setSearch).catch(console.error);},[value]);
-  useEffect(()=> {getUsers().then(setUsers).catch(console.error)},[]);
-  if(!users)return null;
-  const user = users.users;
-  const n = user.find(e => e.id == userId);
-  const name = n?.name
+
 
   const arrName = search?.arrName
   return (
@@ -63,13 +59,12 @@ const Header = () => {
           <div className="h-full w-10 ">
             {userId ? (
               <Link href={'/user'}>
-                <Avatar name={name} />
+                <Avatar name={''} />
               </Link>
-              
             ) : (
               <Link href={'/login'}>
-              <div className=" w-10 rounded-full h-10 bg-gray-400 ">
-                <Button name="Login" size={100} color={""} onClick={() => {}} />
+              <div className=" w-10 rounded-full h-10 bg-gray-700 ">
+                <Button name="Login" height={10} width={100} color={""} onClick={() => {}} />
               </div>
               </Link>
               

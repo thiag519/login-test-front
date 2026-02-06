@@ -1,9 +1,6 @@
 "use client"
 
-import { useActiveOpenModal } from "@/components/hooks/useActiveCreatePost";
-
 export const UserAreaSidebar = () => {
-  const {active, toggleActive} = useActiveOpenModal();
   return (
     <div
       className="w-0 hidden md:flex flex-col bg-gray-900 my-13 mx-3 rounded-s-sm md:w-1/4 

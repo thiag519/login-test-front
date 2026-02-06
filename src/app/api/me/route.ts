@@ -21,7 +21,7 @@ export const GET = async (req: NextRequest) => {
     }
     
     const data = await response.json();
-
+    
     if(!data || !data.userId) {
       return NextResponse.json({authenticated: false});
     }

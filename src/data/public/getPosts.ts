@@ -2,10 +2,10 @@
 import { PostsAreaType } from "@/types/postsAreaType";
 import axios from "axios";
 
-export const getPosts = async ():Promise<PostsAreaType | null> => {
+export const getPosts = async (pages: number):Promise<PostsAreaType | null> => {
   //onst urlPublic = process.env.URL_PUBLIC;
   try {
-    const response = await axios.get(`http://localhost:3001/public/feed`);
+    const response = await axios.get(`http://localhost:3001/public/feed/${pages || 1}`);
     //console.log("response do getPost",response.data);
  
     return response.data;

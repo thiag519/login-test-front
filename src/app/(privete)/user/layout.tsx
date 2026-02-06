@@ -7,6 +7,8 @@ import { UserIdProvider } from "@/components/contexts/userIdContext";
 import { ActiveShowPostsDownProvider } from "@/components/contexts/activeShowPostsDownStoryContext";
 import { ActiveShowPostsUpProvider } from "@/components/contexts/activeShowPostsUpStoryContext";
 import { ActiveMenuProvider } from "@/components/contexts/activeToggleMenu";
+import { SetPagesProvider } from "@/components/contexts/setPageUserContext";
+import { SetPagePostsProvider } from "@/components/contexts/setPagePostsContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,13 +36,16 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <UserIdProvider>
-          
           <ActiveProvider>
           <ActiveShowPostsDownProvider>
           <ActiveShowPostsUpProvider>
           <ActiveMenuProvider>
-            <UserHeader />
-            {children}
+          <SetPagesProvider>
+          <SetPagePostsProvider>
+          
+            {children} 
+          </SetPagePostsProvider>  
+          </SetPagesProvider>
           </ActiveMenuProvider>
           </ActiveShowPostsUpProvider>
           </ActiveShowPostsDownProvider>
