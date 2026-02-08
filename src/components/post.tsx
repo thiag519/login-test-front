@@ -1,62 +1,23 @@
 "use client"
 
-import axios from "axios";
 import { Avatar } from "./avatar";
 import { Button } from "./button";
 import { PostArea } from "./postArea";
 import { PostType } from "@/types/postType";
-import { useState } from "react";
 import { useIdUser } from "./hooks/useIdUser";
 import { useSetPagePosts } from "./hooks/useSetPagePosts";
-
-
+import {deletePost} from '../data/private/deletePost';
+import {setVoteUp} from "../data/private/setVoteUp";
+import { setVoteDown } from "@/data/private/setVoteDown";
 
 type Props = {
  userPosts: PostType[] |  null | undefined;
+ userValidation: boolean;
 };
 
-export const Post = ({userPosts}:Props) => {
-  const[voteUp, setVoteUp] = useState(0);
-  const[voteDown, setVoteDown] = useState(0);
+export const Post = ({userPosts, userValidation}:Props) => {
   const {userId, setUserId} = useIdUser();
   const {pages, setMorePagesPost, setLessPagesPost} = useSetPagePosts();
-
-  const handleVoteUpButton = async (postId: number): Promise<void> => {
-    try {
-      if(userId) {
-        const res = await axios.patch(`/api/proxy/private/post/voteUp/${postId}`);
-        setVoteUp(voteUp + 1);
-        //console.log(res.status);
-      }else {
-        alert("Você precisa estar logado para votar!");
-      } 
-    } catch (err) {
-      if(!userId) {
-        alert("Você precisa estar logado para votar!");    
-      }
-      console.log("Erro ao votar", err);
-      alert("Você já votou nesse post!");
-    }
-  };
-  //console.log("userId no post", userPosts?.length, pages);
-
-  const handleVoteDownButton = async (postId: number): Promise<void> => {
-    try {
-      if(userId) {
-        const res = await axios.patch(`/api/proxy/private/post/voteDown/${postId}`);
-        setVoteDown(voteDown + 1);
-        //console.log(res.status);
-      }else {
-        alert("Você precisa estar logado para votar!");
-      }
-    } catch (err) {
-      if (!userId) {
-        alert("Você precisa estar logado para votar!");
-      }
-      console.log("Erro ao votar", err);
-      alert("Você já votou nesse post!");
-    }
-  };
 
   return (
     <>
@@ -93,9 +54,10 @@ export const Post = ({userPosts}:Props) => {
               titlePost={` ${post.title}`}
               contentPost={`${post.content}`}
             />
-            {userId && (
+            {userValidation && (
               <div className="flex w-auto h-auto m-5 bottom-0 left-0 absolute">
-                <button className="text-[12px] text-gray-200 bg-gray-500 py-1 px-2 rounded-xl" onClick={()=>{}}>Deletar publicação</button>
+                <button className="text-[12px] text-gray-200 bg-gray-500 py-1 px-2 rounded-xl" 
+                onClick={()=> deletePost(post.id) }>Excluir</button>
               </div>
             )}
             <p className="w-full h-5 text-sm text-end  text-gray-500">
@@ -104,23 +66,23 @@ export const Post = ({userPosts}:Props) => {
           </div>
           <div className="w-full h-auto flex items-center justify-between py-2 ">
             <Button
-              name={`${post.reactUp + voteUp} Up`}
+              name={`${post.reactUp} Up`}
               width={40}
               height={10}
               color="SteelBlue"
-              onClick={() => handleVoteUpButton(post.id)}
+              onClick={() => setVoteUp(post.id)}
             />
             <Button
-              name={`${post.reactDown + voteDown} Down`}
+              name={`${post.reactDown} Down`}
               width={40}
               height={10}
               color="Tomato"
-              onClick={() => handleVoteDownButton(post.id)}
+              onClick={() => setVoteDown(post.id)}
             />
           </div>
         </div>
       ))}
-      <div className="flex w-full h-full">
+      <div className={`flex w-full h-full ${userValidation ? 'hidden': 'flex'}`}>
         {userPosts && userPosts?.length > 1 && (
           <div
             className={` h-full w-full ${userPosts.length == pages + 1 ? "hidden" : "flex"} justify-center items-end 

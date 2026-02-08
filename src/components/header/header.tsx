@@ -7,10 +7,12 @@ import Link from "next/link";
 import { searchUserName } from "@/data/public/searchUserName";
 import { SearchUserNameType } from "@/types/searchUserNameType";
 import { useIdUser } from "../hooks/useIdUser";
-import axios from "axios";
-import { PostType } from "@/types/postType";
 
-const Header = () => { 
+type Props = {
+  name: string
+}
+
+const Header = ({name}:Props) => { 
   const {userId, setUserId} =  useIdUser();
 
   const [search, setSearch ] = useState<SearchUserNameType | null>(null);
@@ -59,7 +61,7 @@ const Header = () => {
           <div className="h-full w-10 ">
             {userId ? (
               <Link href={'/user'}>
-                <Avatar name={''} />
+                <Avatar name={name} />
               </Link>
             ) : (
               <Link href={'/login'}>
@@ -67,7 +69,6 @@ const Header = () => {
                 <Button name="Login" height={10} width={100} color={""} onClick={() => {}} />
               </div>
               </Link>
-              
             )}
           </div>
         </div>

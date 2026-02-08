@@ -8,7 +8,6 @@ type Props = {
 }
 
 const UserHeader = ({name}: Props) => {
-
   return (
     <header
       className={`w-dvw left-0 top-0 flex-1 py-2 h-[7vh] min-h-14 flex items-center 

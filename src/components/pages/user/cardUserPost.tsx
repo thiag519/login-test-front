@@ -26,9 +26,7 @@ export const CardUser = ({ author}:Props) => {
   }, []);
   return (
     <div className="w-full flex items-center justify-center flex-col">
-      <Post
-        userPosts={postUser}
-      />
+      <Post userPosts={postUser} userValidation={true} />
     </div>
   );
 }

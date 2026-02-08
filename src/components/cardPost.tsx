@@ -19,7 +19,7 @@ export const CardPost = () => {
   //console.log("posts no feed",post);
   return (
     <div className="w-full flex items-center justify-center flex-col">
-      <Post userPosts={post} />
+      <Post userPosts={post} userValidation={false} />
     </div>
   );
 }

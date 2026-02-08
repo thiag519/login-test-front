@@ -32,10 +32,8 @@ export default function RootLayout({
         <UserIdProvider>
         <SetPagesProvider>
         <SetPagePostsProvider>
-          <Header/>
           {children}
         </SetPagePostsProvider>
-          
         </SetPagesProvider>
         </UserIdProvider>
       </body>
