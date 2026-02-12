@@ -19,7 +19,7 @@ export const CreatePost = ({userId}: Props) => {
   const {active, toggleActive} = useActiveOpenModal();
   const {register, handleSubmit, reset} = useForm<IFormValues>();
   const router = useRouter();
-  console.log(userId)
+  //console.log(userId)
   if(userId === null) {
     return <div className="w-full h-full">Carregando...</div>;
   }
@@ -31,12 +31,13 @@ export const CreatePost = ({userId}: Props) => {
     //console.log(title, content, post)
     try {
       const res = await axios.post(`/api/proxy/private/post/${userId}`, post);
-      console.log(res.status)
+      //console.log(res.status)
       
       if(res.status === 201) {
         router.push("/user");
         toggleActive();
         reset();
+        window.location.reload();
         
       } else {
         router.push('/feed')
@@ -59,7 +60,7 @@ export const CreatePost = ({userId}: Props) => {
       >
         <div className="w-full h-1/4 flex items-center justify-center relative">
           <h1 className="text-3xl text-gray-400">
-            Crie sua proposta!
+            Conte sua ideia!
           </h1>
           <div 
             className="right-0 top-0 p-2 mt-3 absolute cursor-pointer hover:bg-gray-500/25 rounded-full  

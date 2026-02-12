@@ -1,7 +1,7 @@
 import { setInitialName } from "@/utils/setShortName";
 
 type Props = {
-  name: string|undefined;
+  name: string | undefined | null;
 }
 export const Avatar = ({name}:Props) => {
   const InitialName = setInitialName(name)

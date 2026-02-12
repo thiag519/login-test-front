@@ -13,7 +13,7 @@ export const AreaStoryVoteUp = ({userId}: Props) => {
   const { activePostsUpStory, toggleActivePostsUpStory } = useActiveShowPostsUp();
   return (
     <div
-      className={`w-full md:w-1/2 h-[90vh] bg-[#0a0a0a] rounded-sm p-4 
+      className={`w-full md:w-1/2 h-[90vh] bg-gray-950 z-20 rounded-sm p-4 
         ${activePostsUpStory ? "absolute" : "hidden"}`}
     >
       <h2 className="text-xl text-gray-400 h-10">Área de Votação Up</h2>

@@ -9,13 +9,15 @@ import { useEffect, useState } from "react";
 
 
 export default function Home() {
-  const [name, setName] = useState<string>('');
+  const [name, setName] = useState<string | null>('');
   const {userId} = useIdUser();
   
   useEffect(() => {
-    getUserName(userId).then(setName).catch(console.error);
+    if(userId) {
+      getUserName(userId).then(setName).catch(console.error);
+    }
   }, [userId]);
-
+  
   return (
     <div
       className="flex w-full min-h-screen items-center flex-col justify-between

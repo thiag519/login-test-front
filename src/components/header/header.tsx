@@ -8,20 +8,24 @@ import { searchUserName } from "@/data/public/searchUserName";
 import { SearchUserNameType } from "@/types/searchUserNameType";
 import { useIdUser } from "../hooks/useIdUser";
 
+
 type Props = {
-  name: string
+  name: string | null
 }
 
 const Header = ({name}:Props) => { 
   const {userId, setUserId} =  useIdUser();
-
   const [search, setSearch ] = useState<SearchUserNameType | null>(null);
   const [value, setValue] = useState('');
 
-  useEffect(()=> {searchUserName(value).then(setSearch).catch(console.error);},[value]);
+  useEffect(()=> {
+    searchUserName(value).then(setSearch).catch(console.error);
+
+  },[value]);
 
 
   const arrName = search?.arrName
+
   return (
     <header
       className={`w-dvw left-0 top-0 flex-1 py-2

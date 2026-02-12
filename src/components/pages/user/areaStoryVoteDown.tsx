@@ -12,7 +12,7 @@ export const AreaStoryVoteDown = ({userId}: Props) => {
   const { activePostsDownStory, toggleActivePostsDownStory } = useActiveShowPostsDown();
   return (
     <div
-      className={`w-full md:w-1/2 h-[90vh] bg-[#0a0a0a] rounded-sm p-4 ${activePostsDownStory ? "absolute" : "hidden"}`}
+      className={`w-full md:w-1/2 h-[90vh] bg-gray-950 z-20 rounded-sm p-4 ${activePostsDownStory ? "absolute" : "hidden"}`}
     >
       <h2 className="text-xl text-gray-400">Área de Votação Down</h2>
       <span
