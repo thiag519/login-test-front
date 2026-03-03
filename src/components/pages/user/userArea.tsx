@@ -26,7 +26,7 @@ export const UserArea = ({userId}: Props) => {
       </div>
       <AreaStoryVoteUp userId={userId} />
       <AreaStoryVoteDown userId={userId} />
-      <UserAreaPosts user={userId} />
+      <UserAreaPosts author={userId} />
       <UserAreaSidebar />
       <Menu />
     </div>

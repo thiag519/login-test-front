@@ -41,7 +41,7 @@ export const CadastroArea = () => {
             register={register}
             label="name"
             type="text"
-            placeholder="Digite seu nome..."
+            placeholder="Digite seu nome e sobrenome..."
           />
           <Input
             type="email"
