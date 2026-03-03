@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CardStoryDown } from "./cardStoryDown";
+import { CardStoryDown } from "./areaStoryDown";
 import { useActiveShowPostsDown } from "@/components/hooks/useActiveShowPostsDown";
 import imgPlus from "../../../../public/images/icons8-plus-24.png";
 

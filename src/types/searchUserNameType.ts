@@ -1,4 +1,4 @@
 export type SearchUserNameType = {
   success: boolean,
- arrName : string[]
+ arrName : {name: string, id: number}[]
 }

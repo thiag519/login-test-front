@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "../../globals.css";
-import Header from "@/components/header/header";
+import "./globals.css";
 import { UserIdProvider } from "@/components/contexts/userIdContext";
 import { SetPagesProvider } from "@/components/contexts/setPageUserContext";
 import { SetPagePostsProvider } from "@/components/contexts/setPagePostsContext";

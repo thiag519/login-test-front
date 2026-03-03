@@ -18,7 +18,6 @@ export const LoginArea = () => {
       if(res.data.userId) {
         setUserId(res.data.userId);
       }
-      //console.log("senha na hora do login no front", data.password)
       router.push("/user");
     } catch (err) {
       console.log("Erro ao fazer o login", err);

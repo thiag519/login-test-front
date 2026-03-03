@@ -26,7 +26,7 @@ export const NavBar = () => {
       ><ButtonPost img={imgPlus} text="Conte sua ideia"onClick={() => {toggleActive(); toggleActiveMenu();}}/>
         <ButtonPost img={imgUp} text="Historico de votos positivos" onClick={() => {toggleActivePostsUpStory(); toggleActiveMenu();}} />
         <ButtonPost img={imgDown} text="Historico de votos negativos" onClick={() => {toggleActivePostsDownStory(); toggleActiveMenu();}} />
-        <Link className='flex w-full' href={'/feed'}><ButtonPost img={imgArrow} text="Voltar" onClick={() => {toggleActiveMenu();}} /></Link>
+        <Link className='flex w-full' href={'/'}><ButtonPost img={imgArrow} text="Voltar" onClick={() => {toggleActiveMenu();}} /></Link>
       </div>
     </div>
   );

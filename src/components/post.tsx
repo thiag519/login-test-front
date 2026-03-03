@@ -57,7 +57,7 @@ export const Post = ({userPosts, userValidation}:Props) => {
             {userValidation && (
               <div className="flex w-auto h-auto m-5 bottom-0 left-0 absolute">
                 <button className="text-[12px] text-gray-200 bg-gray-500 py-1 px-2 rounded-xl" 
-                onClick={()=> deletePost(post.id) }>Excluir</button>
+                onClick={()=> deletePost(post.id)}>Excluir</button>
               </div>
             )}
             <p className="w-full h-5 text-sm text-end  text-gray-500">
@@ -70,26 +70,25 @@ export const Post = ({userPosts, userValidation}:Props) => {
               width={40}
               height={10}
               color="SteelBlue"
-              onClick={() => setVoteUp(post.id)}
+              onClick={() => setVoteUp(post.id, userId)}
             />
             <Button
               name={`${post.reactDown} Down`}
               width={40}
               height={10}
               color="Tomato"
-              onClick={() => setVoteDown(post.id)}
+              onClick={() => setVoteDown(post.id, userId)}
             />
           </div>
         </div>
       ))}
       <div className={`flex w-full h-full ${userValidation ? 'hidden': 'flex'}`}>
-        {userPosts && userPosts?.length > 1 && (
+        {userPosts && userPosts?.length > 4 && (
           <div
             className={` h-full w-full ${userPosts.length == pages + 1 ? "hidden" : "flex"} justify-center items-end 
             text-sm text-gray-400`}
-          >
-            <Button
-              name={`${userPosts.length == pages + 1 ? "Acabou" : "Próximos.."} `}
+          ><Button
+              name={`${userPosts.length == pages? "Acabou" : "Próximos.."} `}
               width={23}
               height={10}
               color=""

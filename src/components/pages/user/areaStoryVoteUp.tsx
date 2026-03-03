@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CardStoryUp } from "./cardStoryUp";
+import { CardStoryUp } from "./areaStoryUp";
 import { useActiveShowPostsUp } from "@/components/hooks/useActiveShowPostsUp";
 import imgPlus from "../../../../public/images/icons8-plus-24.png";
 

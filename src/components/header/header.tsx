@@ -23,7 +23,6 @@ const Header = ({name}:Props) => {
 
   },[value]);
 
-
   const arrName = search?.arrName
 
   return (
@@ -52,12 +51,12 @@ const Header = ({name}:Props) => {
               }}
             />
             <div
-              className={`w-full h-auto ${arrName? 'flex': 'hidden'} flex-col bg-gray-900 border-b p-3 text-gray-500 border-gray-400 rounded-b-lg`}
+              className={`w-full h-auto ${arrName && arrName.length >= 1 ? 'flex': 'hidden'} flex-col bg-gray-900 border-b p-3 text-gray-500 border-gray-400 rounded-b-lg`}
             >
-              {arrName &&
+              {arrName && 
                 arrName.map((item, index) => (
                   <ul key={index}>
-                    <li>{item}</li>
+                    <li>{item.name}</li>
                   </ul>
                 ))}
             </div>
