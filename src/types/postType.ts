@@ -9,5 +9,4 @@ export type PostType = {
   author: {
     name:string
   }
-  
 }

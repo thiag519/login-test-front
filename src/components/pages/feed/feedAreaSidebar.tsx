@@ -9,13 +9,14 @@ type Props = {
 }
 export const FeedAreaSidebar = (users:Props) => {
   const {pages, setMorePagesUser, setLessPagesUser} = useSetPagesUser();
+  
   return (
     <div
       className="w-0 hidden min-h-170 md:flex flex-col bg-gray-900 my-13 mx-3 rounded-s-sm md:w-1/4 
       lg:w-1/5 gap-7  h-4/5 right-0 items-center justify-start py-10 text-gray-400 px-2 
       overflow-y-auto"
     >
-      {users.users?.map((user, index) => (
+      { users.users?.map((user) => (
         <div
           key={user.id}
           className="flex w-full h-auto px-3 gap-3 border-b border-gray-400"
