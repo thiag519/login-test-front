@@ -5,18 +5,22 @@ import { FeedAreaPosts } from "./feedAreaPosts";
 import { FeedAreaSidebar } from "./feedAreaSidebar";
 import { UsersAreaType } from "@/types/usersAreaType";
 import { getUsers } from "@/data/public/getUsers";
-import { FeedAreaCarrying } from "@/components/carrying/feedAreaCarrying";
 import { useSetPagesUser } from "@/components/hooks/useSetPageUsers";
+import { usersListMock } from "../../../../public/mock/usersListMock";
 
 export const FeedArea = () => {
   const [users, setUsers]= useState<UsersAreaType | null>(null);
   const { pages, setMorePagesUser } = useSetPagesUser();
   
     useEffect(() => {getUsers(pages).then(setUsers).catch(console.error)},[pages]);
+    let user;
     if(!users) {
-      return <FeedAreaCarrying />;
+      user = usersListMock;
+      console.log(user)
+    } else {
+      user = users?.users; 
     }
-    const user = users?.users; 
+
 
   return (
     <div

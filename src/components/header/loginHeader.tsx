@@ -14,7 +14,7 @@ const LoginHeader = () => {
       <div className="w-[80%] flex items-center justify-between gap-3">
         <div className="text-3xl text-gray-400">Logo</div>
         <div className="h-full w-full flex items-center justify-end text-gray-400">
-          <Link className="" href={"/feed"}>
+          <Link className="" href={"/"}>
             <Image src={imgArrow}  alt="Voltar" width={35} height={35}/>
           </Link>
         </div>

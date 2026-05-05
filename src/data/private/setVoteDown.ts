@@ -7,8 +7,8 @@ export const setVoteDown = async (postId: number, userId: number|null): Promise<
       return;
     };
     const res = await axios.patch(`/api/proxy/private/post/voteDown/${postId}`);
-   // window.location.reload();
-  } catch (err) {
+    //window.location.reload();
+  } catch (err: any) {
     alert("Você já votou nesse post!");
   }
 };
