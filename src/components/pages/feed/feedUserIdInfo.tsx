@@ -11,14 +11,19 @@ import img from "../../../../public/images/icons8-close-30.png"
 export const FeedUserIdInfo = () => {
   const { userIdInfo, active, toggleActive } = useUserIdToInfo();
   const [userInfo, setUserInfo] = useState<UserByIdInfoType | null>(null);
-  console.log(userIdInfo);
-  useEffect(()=> {getUserById(userIdInfo).then(setUserInfo).catch(console.error);},[ userInfo]);
-  console.log(userInfo?.user, userIdInfo);
+  
+  //console.log(userIdInfo);
+  useEffect(()=> {
+    if (userIdInfo){
+      getUserById(userIdInfo).then(setUserInfo).catch(console.error);
+    }
+  },[ userIdInfo]);
+  //console.log(userInfo?.user, userIdInfo);
 
   if(!userInfo?.success) return;
   
   return (
-    <div className={`w-4/5 h-auto relative ${active ? "flex" : "hidden"}`}>
+    <div className={`w-4/5 h-auto max-w-100 min-w-90 relative ${active ? "flex" : "hidden"}`}>
       <span
         onClick={() => toggleActive()}
         className="absolute z-10 p-3 rounded-full hover:bg-gray-800"
