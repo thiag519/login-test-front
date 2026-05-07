@@ -6,7 +6,8 @@ export const GET = async (req: NextRequest) => {
     if(!token){
       return NextResponse.json({authenticated: false});
     };
-    const response = await fetch("http://localhost:3001/private/me", {
+    const apiUrlPrivate = process.env.URL_PRIVATE; 
+    const response = await fetch(`${apiUrlPrivate}/me`, {
       headers: {
         Authorization: `Bearer ${token}`,
       }

@@ -19,7 +19,6 @@ type Props = {
 }
 
 export const Input = ({placeholder,type,label, register}:Props) => {
-  //const { register, handleSubmit } = useForm<IFormValues>();
   const [inputValue, setInputValue] = useState<string>('');
 
   return (

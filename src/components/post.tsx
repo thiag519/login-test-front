@@ -16,8 +16,8 @@ type Props = {
 };
 
 export const Post = ({userPosts, userValidation}:Props) => {
-  const {userId, setUserId} = useIdUser();
-  const {pages, setMorePagesPost, setLessPagesPost} = useSetPagePosts();
+  const {userId} = useIdUser();
+  const {pages, setMorePagesPost} = useSetPagePosts();
 
   return (
     <>
@@ -38,7 +38,6 @@ export const Post = ({userPosts, userValidation}:Props) => {
         </div>
       )}
       {userPosts?.map((post) => (
-        //console.log("em post", post),
         <div key={post.id} className="w-4/5 max-w-100 min-w-90 h-auto my-10">
           <div
             className="w-full h-auto border-b-2 rounded-sm bg-gray-900 border-gray-400 
