@@ -6,7 +6,6 @@ type Props = {
   author: number|null;
 }
 export const UserAreaPosts = ({author}:Props) => {
-  //console.log("userId no userAreaPosts", user);
   const [postUser, setPostUser] = useState<PostType[] | null>(null);
 
   useEffect(() => {
@@ -14,7 +13,6 @@ export const UserAreaPosts = ({author}:Props) => {
       try {
         const res = await axios.get(`/api/proxy/private/posts/${author}`);
         setPostUser(res.data.posts);
-        //console.log("Posts do usuário carregados", res.data.posts);
       } catch (error) {
         console.log("Erro ao buscar posts do usuário", error);
       }

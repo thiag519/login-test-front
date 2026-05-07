@@ -3,7 +3,7 @@ import { Logout } from "./logout"
 import { NavBar } from "./navBar"
 
 export const Menu = () => {
-  const {activeMenu, toggleActiveMenu} = useActiveMenu();
+  const {activeMenu} = useActiveMenu();
   return (
     <div
     style={{transition: '1s all ease-in-out'}}

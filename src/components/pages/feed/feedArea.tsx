@@ -10,7 +10,7 @@ import { usersListMock } from "../../../../public/mock/usersListMock";
 
 export const FeedArea = () => {
   const [users, setUsers]= useState<UsersAreaType | null>(null);
-  const { pages, setMorePagesUser } = useSetPagesUser();
+  const { pages } = useSetPagesUser();
   
     useEffect(() => {getUsers(pages).then(setUsers).catch(console.error)},[pages]);
     let user;

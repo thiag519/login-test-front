@@ -11,7 +11,6 @@ type Props = {
 }
 
 export const TextArea = ({placeholder,label, register}:Props) => {
-  //const { register, handleSubmit } = useForm<IFormValues>();
   const [inputValue, setInputValue] = useState<string>('')
   return (
     <>

@@ -13,10 +13,10 @@ import { useActiveMenu } from './hooks/useActiveMenu';
 
 
 export const NavBar = () => {
-  const {active, toggleActive} = useActiveOpenModal();
-  const {activeMenu, toggleActiveMenu} = useActiveMenu();
-  const {activePostsUpStory, toggleActivePostsUpStory} = useActiveShowPostsUp();
-  const {activePostsDownStory, toggleActivePostsDownStory } = useActiveShowPostsDown();
+  const { toggleActive} = useActiveOpenModal();
+  const { toggleActiveMenu} = useActiveMenu();
+  const { toggleActivePostsUpStory} = useActiveShowPostsUp();
+  const { toggleActivePostsDownStory } = useActiveShowPostsDown();
 
   return (
     <div

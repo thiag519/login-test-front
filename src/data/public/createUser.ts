@@ -4,8 +4,9 @@ import axios from "axios";
 
 export const createUser = async (info:IFormValues) => {
   const infoJson = JSON.stringify(info);
+  const apiUrl = process.env.URL_PUBLIC;
   try {
-    const response = await axios.post(`http://localhost:3001/public/cadastro`,infoJson,{ headers: {
+    const response = await axios.post(`${apiUrl}/cadastro`,infoJson,{ headers: {
       'Content-Type':'application/json'
       }
     });

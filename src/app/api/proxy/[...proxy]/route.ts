@@ -5,8 +5,8 @@ import { NextRequest, NextResponse } from "next/server";
 export const proxyRequest = async (req: NextRequest,proxy: string[] , method: string) => {
   try {
     const token = req.cookies.get("token" )?.value;
-
-    const backendUrl =  `http://localhost:3001/${proxy.join('/')}`;
+    const url = process.env.URL;
+    const backendUrl =  `${url}/${proxy.join('/')}`;
 
     //console.log("URL: ",backendUrl);
 
