@@ -1,5 +1,6 @@
 "use client"
 
+import { UserIdToInfoProvider } from "@/components/contexts/userIdToInfoContext";
 import Header from "@/components/header/header";
 import { useIdUser } from "@/components/hooks/useIdUser";
 import { FeedArea } from "@/components/pages/feed/feedArea";
@@ -22,9 +23,12 @@ export default function Home() {
     <div
       className="flex w-full min-h-screen items-center flex-col justify-between
      text-white overflow-hidden"
-    ><Header name={name}/>
+    ><UserIdToInfoProvider>
+      <Header name={name}/>
       <FeedArea />
       <Footer />
+    </UserIdToInfoProvider>
+      
     </div>
   );
 }

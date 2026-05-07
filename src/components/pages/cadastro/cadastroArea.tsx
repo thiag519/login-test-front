@@ -3,15 +3,19 @@
 import { IFormValues, Input } from "@/components/input";
 import { createUser } from "@/data/public/createUser";
 import { RegisterType } from "@/types/registerType";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import eyeClose from "../../../../public/images/eye-close1.png";
+import eyeOpen from "../../../../public/images/eye-open1.png";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 
 export const CadastroArea = () => {
   const router = useRouter();
   const {register, handleSubmit,formState:{errors}, reset} = useForm<IFormValues>();
-
+  const [showPassword, setShowPassword] = useState(false);
   const onSubmit:SubmitHandler<IFormValues> = async (data:IFormValues) => {
     //console.log(JSON.stringify(data));
     const result = await createUser(data as RegisterType);
@@ -27,15 +31,14 @@ export const CadastroArea = () => {
       <div
         className="flex flex-col items-center justify-center w-full md:w-3/5 lg:2/4 h-full rounded-lg
        bg-amber-50/30 px-4 md:px-6 lg:px-10 gap-6 sm:gap-10 max-w-120 sm:min-w-110 min-h-90"
-      >
-        <h1 className="sm:text-4xl text-3xl flex items-center justify-center text-gray-400 h-1/5">
+      ><h1 className="sm:text-4xl text-3xl flex items-center justify-center text-gray-400 h-1/5">
           Cadastro
         </h1>
         <div className="h-0.5 w-full bg-gray-400"></div>
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-full sm:h-2/5 h-2/5 flex flex-col min-h-50"
+          className="w-full sm:h-2/5 h-2/5 flex flex-col min-h-50 relative"
         >
           <Input
             register={register}
@@ -50,11 +53,22 @@ export const CadastroArea = () => {
             placeholder="Digite seu e-mail..."
           />
           <Input
-            type="password"
+            type={showPassword ? "text" : "password"}
             label="password"
             register={register}
             placeholder="Digite sua senha..."
           />
+          <button
+            type="button"
+            className={`h-5 w-6 absolute right-3 top-33`}
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? (
+              <Image src={eyeOpen} alt="senha visível" className=" w-5" />
+            ) : (
+              <Image src={eyeClose} alt="senha oculta" className=" w-5" />
+            )}
+          </button>
           <label className="w-full h-1/4 mt-6">
             <input
               className={`px-4 h-10 w-full bg-[#808080] text-white flex text-[12px] text-center rounded-3xl gap-1.5
