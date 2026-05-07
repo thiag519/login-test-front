@@ -2,7 +2,7 @@ import { UsersAreaType } from "@/types/usersAreaType";
 import axios from "axios";
 
 export const getUsers = async (page: number):Promise<UsersAreaType | null> => {
-  const apiUrl = process.env.URL_PUBLIC;
+  const apiUrl = process.env.NEXT_URL_PUBLIC;
   
   try {
     const response = await axios.get(`${apiUrl}/users/${page || 1}`);
