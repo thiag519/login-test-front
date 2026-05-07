@@ -20,17 +20,17 @@ type Props = {
 
 export const Input = ({placeholder,type,label, register}:Props) => {
   //const { register, handleSubmit } = useForm<IFormValues>();
-  const [inputValue, setInputValue] = useState<string>('')
+  const [inputValue, setInputValue] = useState<string>('');
+
   return (
     <>
-      <label
-        className={`w-full min-h-1 sm:h-1/4 text-xl text-transparent `}
-      >{label}
+      <label className={`w-full min-h-1 sm:h-1/4 text-xl text-transparent `}>
+        {label}
       </label>
       <input
         className={`w-full text-start min-h-12 max-h-13 text-sm relative
         text-gray-400  border bg-gray-800/30 border-gray-600 rounded-xl px-5 shadow-2xl 
-        hover:bg-gray-800 hover:border-gray-800 outline-0`}
+        hover:bg-gray-800/70 hover:border-gray-800 outline-0`}
         minLength={3}
         maxLength={100}
         type={type}
@@ -43,6 +43,7 @@ export const Input = ({placeholder,type,label, register}:Props) => {
           setInputValue(e.target.value);
         }}
       />
+  
     </>
   );
 }

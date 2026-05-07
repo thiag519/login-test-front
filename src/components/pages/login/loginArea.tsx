@@ -42,7 +42,7 @@ export const LoginArea = () => {
         <div className="h-0.5 w-full bg-gray-400"></div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-full sm:h-2/6 h-2/5 flex flex-col relative"
+          className="w-full sm:h-2/6 h-2/5 flex flex-col relative items-end "
         >
           <Input
             type="email"
@@ -51,19 +51,22 @@ export const LoginArea = () => {
             placeholder="Digite seu e-mail..."
           />
           <Input
-            type={showPassword ? 'text' : 'password'}
+            type={showPassword ? "text" : "password"}
             label="password"
             register={register}
             placeholder="Digite sua senha..."
           />
-          <button type="button" className={`h-5 w-6 absolute right-3 top-25.5` } onClick={() => setShowPassword(!showPassword)}>{ showPassword 
-            ? 
-            <Image src={ eyeOpen } alt="senha visível" className=" w-5" />
-            :
-            <Image src={ eyeClose } alt="senha oculta" className=" w-5"/>
-            }
+          <button
+            type="button"
+            className={`h-20 w-9 flex items-start -mt-8 z-10 `}
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? (
+              <Image src={eyeOpen} alt="senha visível" className=" w-5" />
+            ) : (
+              <Image src={eyeClose} alt="senha oculta" className=" w-5" />
+            )}
           </button>
-          
           <label className="w-full h-1/4 mt-6">
             <input
               className={`px-4 h-10 w-full bg-[#808080] text-white flex text-[12px] text-center rounded-3xl gap-1.5
