@@ -31,14 +31,15 @@ export const CadastroArea = () => {
       <div
         className="flex flex-col items-center justify-center w-full md:w-3/5 lg:2/4 h-full rounded-lg
        bg-amber-50/30 px-4 md:px-6 lg:px-10 gap-6 sm:gap-10 max-w-120 sm:min-w-110 min-h-90"
-      ><h1 className="sm:text-4xl text-3xl flex items-center justify-center text-gray-400 h-1/5">
+      >
+        <h1 className="sm:text-4xl text-3xl flex items-center justify-center text-gray-400 h-1/5">
           Cadastro
         </h1>
         <div className="h-0.5 w-full bg-gray-400"></div>
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-full sm:h-2/5 h-2/5 flex flex-col min-h-50 relative"
+          className="w-full sm:h-2/5 h-2/5 gap-2 flex flex-col min-h-50 relative items-end justify-between"
         >
           <Input
             register={register}
@@ -60,7 +61,7 @@ export const CadastroArea = () => {
           />
           <button
             type="button"
-            className={`h-5 w-6 absolute right-3 top-33`}
+            className={`h-20 w-9 flex items-start -mt-10  mb-5 z-10`}
             onClick={() => setShowPassword(!showPassword)}
           >
             {showPassword ? (
