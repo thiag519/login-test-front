@@ -29,7 +29,7 @@ export const FeedArea = () => {
       <div
         className=" w-0 left-0 mx-3 min-h-160 my-13 rounded-e-md hidden md:flex md:w-1/4 
     lg:w-1/5 h-4/5 items-center justify-center bg-gray-900/50 text-gray-400"
-      >anucios
+      >anúncios
       </div>
       <FeedAreaPosts />
       <FeedAreaSidebar users={user} />
