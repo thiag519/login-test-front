@@ -22,7 +22,7 @@ const Page = () => {
   if (!name) {
     return <div className="w-full h-full">Carregando...</div>;
   }
-  //console.log("userId no page.tsx", userId, 'name:', name);
+  console.log("userId no page.tsx", userId, 'name:', name);
   return (
     <>
       <UserHeader name={name}/>

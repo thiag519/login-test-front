@@ -16,7 +16,6 @@ export const FeedArea = () => {
     let user;
     if(!users) {
       user = usersListMock;
-      console.log(user)
     } else {
       user = users?.users; 
     }

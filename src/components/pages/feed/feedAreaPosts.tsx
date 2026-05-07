@@ -5,9 +5,12 @@ import { PostsAreaType } from "@/types/postsAreaType";
 import { PostType } from "@/types/postType";
 import { useEffect, useState } from "react";
 import { postsListMock } from "../../../../public/mock/postsListMock";
+import { FeedUserIdInfo } from "./feedUserIdInfo";
+import { useUserIdToInfo } from "@/components/hooks/useUserIdToInfo";
 
 export const FeedAreaPosts = () => {
-  const {pages, setMorePagesPost, setLessPagesPost} = useSetPagePosts();
+  const {userIdInfo} = useUserIdToInfo();
+  const {pages} = useSetPagePosts();
   const [postsI, setPostsI]= useState<PostsAreaType | null>(null);
   
   useEffect(()=> {getPosts(pages).then(setPostsI).catch(console.error)},[pages]);
@@ -15,7 +18,6 @@ export const FeedAreaPosts = () => {
   if(!postsI) {
     const postMock  = postsListMock;
     post = postMock;
-    console.log(postMock)
   } else {
     post = postsI?.posts; 
   }
@@ -25,12 +27,15 @@ export const FeedAreaPosts = () => {
     <div
       className="w-full md:w-1/2 h-[90vh] my-3 flex flex-col items-center justify-center overflow-hidden
       scroll-m-0"
-    ><div
+    >
+      <div
         style={{
           scrollbarWidth: "none",
         }}
         className="w-full h-full overflow-y-scroll flex flex-col items-center"
-      ><div className="w-full flex items-center justify-center flex-col">
+      >
+        <div className="w-full flex items-center justify-center flex-col">
+          <FeedUserIdInfo />
           <Post userPosts={post} userValidation={false} />
         </div>
       </div>
