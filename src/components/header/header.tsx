@@ -20,8 +20,13 @@ const Header = ({name}:Props) => {
   
   const [search, setSearch ] = useState<SearchUserNameType | null>(null);
   const [value, setValue] = useState('');
-
-  useEffect(()=> {searchUserName(value).then(setSearch).catch(console.error);},[value]);
+ 
+    useEffect(()=> {
+      if(value !== '') {
+        searchUserName(value).then(setSearch).catch(console.error);
+      }
+    },[value]);
+  
   let arrName = search?.arrName
   
   return (
@@ -48,14 +53,15 @@ const Header = ({name}:Props) => {
               }}
             />
             <div
-              className={`w-full h-auto ${arrName && arrName.length >= 1 ? 'flex': 'hidden'} flex-col bg-gray-900 border-b p-3 text-gray-500 border-gray-400 rounded-b-lg`}
+              className={`w-full h-auto ${arrName && arrName.length >= 1 && value !== '' ? 'flex': 'hidden'} flex-col bg-gray-900 border-b p-3 text-gray-500 border-gray-400 rounded-b-lg`}
             >
               {arrName && 
                 arrName.map((item) => (
                   <ul key={item.id}>
                     <li className="py-1 cursor-pointer" onClick={() => {
                       setUserIdToInfo(item.id); 
-                      console.log(item.id)
+                      //console.log(item.id)
+                      arrName = []
                       }
                       }>{item.name}</li>
                   </ul>

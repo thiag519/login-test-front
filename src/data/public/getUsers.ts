@@ -10,7 +10,7 @@ export const getUsers = async (page: number):Promise<UsersAreaType | null> => {
  
     return response.data;
   } catch (err) {
-    console.log("Falha ao carregar posts. "+err)
+    console.log("Falha ao carregar usuários. "+err)
     return null;
   }
 }

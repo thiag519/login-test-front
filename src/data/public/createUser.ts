@@ -12,7 +12,7 @@ export const createUser = async (info:IFormValues) => {
     });
     return response.data;
   } catch (err) {
-    console.log("Falha ao carregar  "+err)
+    console.log("Falha ao cadastrar usuário  "+err)
     return null;
   }
 }

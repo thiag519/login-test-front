@@ -8,7 +8,7 @@ export const getUserById = async (id: number | null):Promise<UserByIdInfoType | 
     //console.log(response.data);
     return response.data;
   } catch (err) {
-    console.log("Falha ao carregar  "+err)
+    console.log("Falha ao carregar informções do usuário  "+err)
     return null;
   }
 }
