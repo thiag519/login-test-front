@@ -1,5 +1,5 @@
 
-export const setFullName = (name:string | undefined) => {
+export const setFullName = (name:string | undefined | null) => {
   try {
     if(!name) return 'sem nome';
     

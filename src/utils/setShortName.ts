@@ -1,4 +1,4 @@
-export const setInitialName = (name:string | undefined) => {
+export const setInitialName = (name:string | undefined | null) => {
   try {
     if(!name)return 'S N';
     const first = name.charAt(0);
