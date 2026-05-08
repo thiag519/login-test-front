@@ -20,7 +20,6 @@ export const FeedAreaPosts = () => {
     post = postsI?.posts; 
   }
   
-  //const post:  = postsI?.posts;
   return (
     <div
       className="w-full md:w-1/2 h-[90vh] my-3 flex flex-col items-center justify-center overflow-hidden

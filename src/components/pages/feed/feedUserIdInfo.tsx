@@ -12,13 +12,11 @@ export const FeedUserIdInfo = () => {
   const { userIdInfo, active, toggleActive } = useUserIdToInfo();
   const [userInfo, setUserInfo] = useState<UserByIdInfoType | null>(null);
   
-  //console.log(userIdInfo);
   useEffect(()=> {
     if (userIdInfo){
       getUserById(userIdInfo).then(setUserInfo).catch(console.error);
     }
   },[ userIdInfo]);
-  //console.log(userInfo?.user, userIdInfo);
 
   if(!userInfo?.success) return;
   

@@ -1,6 +1,4 @@
-import { refresh } from "next/cache";
-
-export const setInitialName = (name:string | undefined| null) => {
+export const setInitialName = (name:string | undefined) => {
   try {
     if(!name)return 'S N';
     const first = name.charAt(0);

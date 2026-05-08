@@ -16,7 +16,7 @@ type Props = {
 
 const Header = ({name}:Props) => { 
   const {userId} =  useIdUser();
-  const { setUserIdToInfo, toggleActive } = useUserIdToInfo();
+  const { setUserIdToInfo } = useUserIdToInfo();
   
   const [search, setSearch ] = useState<SearchUserNameType | null>(null);
   const [value, setValue] = useState('');
