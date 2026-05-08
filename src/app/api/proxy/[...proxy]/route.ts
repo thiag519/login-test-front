@@ -8,10 +8,7 @@ export const proxyRequest = async (req: NextRequest,proxy: string[] , method: st
     const url = process.env.NEXT_PUBLIC_URL;
     const backendUrl =  `${url}/${proxy.join('/')}`;
 
-    //console.log("URL: ",backendUrl);
-
     const httpMethod = method.toUpperCase();
-    //console.log("Method: ",httpMethod);
 
     let body:any= undefined;
 
@@ -21,12 +18,9 @@ export const proxyRequest = async (req: NextRequest,proxy: string[] , method: st
       body = await req.json()
     } 
 
-    //const body = httpMethod !== "GET" ? await req.json()  : undefined;
-
     const response = await fetch(backendUrl, {
       method: httpMethod,
       headers:{
-       // "Content-Type": "application/json",
         ...(body && {"Content-Type": "application/json"}),
         ...(token && {Authorization: `Bearer ${token}`}),
       },

@@ -17,7 +17,6 @@ export const CadastroArea = () => {
   const {register, handleSubmit,formState:{errors}, reset} = useForm<IFormValues>();
   const [showPassword, setShowPassword] = useState(false);
   const onSubmit:SubmitHandler<IFormValues> = async (data:IFormValues) => {
-    //console.log(JSON.stringify(data));
     const result = await createUser(data as RegisterType);
     if(result.success){
       reset();

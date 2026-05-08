@@ -1,5 +1,3 @@
-import { refresh } from "next/cache";
-
 export const setInitialName = (name:string | undefined) => {
   try {
     if(!name)return 'S N';

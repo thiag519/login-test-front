@@ -21,7 +21,6 @@ export const UserIdProvider = ({children}:{children:ReactNode}) => {
         const data = await res.json();
         if(res.ok) {
           if(data.authenticated) {
-            //console.log("User ID no UserIdContext: ", data.userId);
           setUserId(data.userId);
           }else {
             setUserId(null);
@@ -36,7 +35,6 @@ export const UserIdProvider = ({children}:{children:ReactNode}) => {
     };
     loadUser();
   }, []);
-  //console.log("User ID ainda no UserIdContext:", userId);
   return (
     <UserIdContext.Provider value={{userId, loading ,setUserId}}>
       {children}
