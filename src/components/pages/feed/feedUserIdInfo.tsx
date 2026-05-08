@@ -33,7 +33,7 @@ export const FeedUserIdInfo = () => {
             flex flex-col p-6 relative"
       >
         <div className="w-full flex items-center justify-around gap-10 border-b border-gray-400 p-3">
-          <Avatar name={userInfo?.user.name} />
+          <Avatar name={userInfo?.user.name || "No Name"}  />
           <p className="text-xl text-gray-400">{userInfo?.user.name}</p>
         </div>
         {userInfo?.user.posts.map((item, index) => (
