@@ -1,8 +1,8 @@
 export const postsListMock = [
   {
     id: 1,
-    title: "IA no dia a dia",
-    content: "A inteligência artificial já faz parte da nossa rotina, mesmo quando a gente nem percebe. Desde sugestões de filmes até aplicativos de trânsito, a tecnologia está tornando pequenas tarefas mais rápidas e práticas.",
+    title: "CSS Frameworks",
+    content: "Tailwind CSS é melhor que CSS puro para projetos modernos.",
     reactUp: 10,
     reactDown: 2,
     userId: 1,
@@ -13,8 +13,8 @@ export const postsListMock = [
   },
   {
     id: 2,
-    title: "Menos telas, mais equilíbrio",
-    content: "A tecnologia aproxima pessoas e facilita a vida, mas também é importante saber a hora de desconectar. Encontrar equilíbrio entre o online e o offline faz diferença na qualidade de vida.",
+    title: "Carros elétricos",
+    content: "Até 2035 carros a combustão deveriam ser proibidos.",
     reactUp: 5,
     reactDown: 1,
     userId: 2,
@@ -25,8 +25,8 @@ export const postsListMock = [
   },
   {
     id: 3,
-    title: "O futuro do trabalho",
-    content: "Cada vez mais profissões estão usando tecnologia para automatizar tarefas e ganhar produtividade. Isso mostra como aprender novas ferramentas pode abrir portas no mercado de trabalho.",
+    title: "IA substituindo empregos",
+    content: "A Inteligência Artificial vai criar mais empregos do que destruir.",
     reactUp: 7,
     reactDown: 0,
     userId: 3,

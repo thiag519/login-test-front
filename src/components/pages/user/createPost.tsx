@@ -9,14 +9,16 @@ import { TextArea } from "@/components/textArea";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { createPost } from "@/data/private/createPost";
+import { useState } from "react";
 
 type Props = {
   userId: number | null;
 }
 
 export const CreatePost = ({userId}: Props) => {
-
-  const {active, toggleActive} = useActiveOpenModal();
+  const [loading, setLoading] = useState(false);
+  const { toggleActive} = useActiveOpenModal();
   const {register, handleSubmit, reset} = useForm<IFormValues>();
   const router = useRouter();
   //console.log(userId)
@@ -24,28 +26,36 @@ export const CreatePost = ({userId}: Props) => {
     return <div className="w-full h-full">Carregando...</div>;
   }
   const onSubmit:SubmitHandler<IFormValues> = async (data:IFormValues) => {
-    //console.log(data);
+    console.log(data);
     const title = data.title;
     const content = data.content;
     const post = { title, content };
     //console.log(title, content, post)
+    if(loading) return;
+
+    setLoading(true);
     try {
-      const res = await axios.post(`/api/proxy/private/post/${userId}`, post);
-      //console.log(res.status)
+      const res = await createPost(userId, post);
+      console.log(res)
       
-      if(res.status === 201) {
-        router.push("/user");
-        toggleActive();
+      if(res) {
         reset();
-        window.location.reload();
+        toggleActive();
+        
+        
+        setTimeout(() => {
+          router.refresh();
+          router.push("/user");
+        }, 2000)
+        
         
       } else {
-        router.push('/feed')
-        alert("Erro ao criar o post!");
+        //router.push('/')
       }
     } catch (error) {
       console.error("Erro ao criar o post:", error);
-      alert("Erro ao criar o post!"); 
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -92,7 +102,7 @@ export const CreatePost = ({userId}: Props) => {
             <Button
               width={30}
               height={10}
-              name="Enviar"
+              name={`${loading ? 'Criando...' : 'Criar post'}`}
               color="gray"
               onClick={() => {
               }}

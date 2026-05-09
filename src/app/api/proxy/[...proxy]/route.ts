@@ -11,12 +11,21 @@ export const proxyRequest = async (req: NextRequest,proxy: string[] , method: st
     const httpMethod = method.toUpperCase();
 
     let body:any= undefined;
-
+    if(method !== 'GET') {
+      try {
+        body = await req.json();
+      }catch {
+        body = undefined;
+      }
+    }
+    /*
     const contetLength = req.headers.get("content-length");
+
+    console.log("contentLength: ",contetLength)
 
     if (method !== "GET" && contetLength && contetLength !== "0" ) {
       body = await req.json()
-    } 
+    }*/
 
     const response = await fetch(backendUrl, {
       method: httpMethod,
@@ -27,6 +36,8 @@ export const proxyRequest = async (req: NextRequest,proxy: string[] , method: st
       body: body? JSON.stringify(body) : undefined,
     });
     const data = await response.json();
+    /*console.log("STATUS:", response.status);
+    console.log("BACKEND RESPONSE:", data);*/
     return NextResponse.json(data, {status: response.status});
   } catch (error: any) {
     console.error("Proxy request error:", error);

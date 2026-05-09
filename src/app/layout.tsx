@@ -4,6 +4,10 @@ import "./globals.css";
 import { UserIdProvider } from "@/components/contexts/userIdContext";
 import { SetPagesProvider } from "@/components/contexts/setPageUserContext";
 import { SetPagePostsProvider } from "@/components/contexts/setPagePostsContext";
+import { ActiveShowPostsUpProvider } from "@/components/contexts/activeShowPostsUpStoryContext";
+import { ActiveShowPostsDownProvider } from "@/components/contexts/activeShowPostsDownStoryContext";
+import { ActiveMenuProvider } from "@/components/contexts/activeToggleMenu";
+import { ActiveProvider } from "@/components/contexts/activeModalCreatPostContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +36,15 @@ export default function RootLayout({
         <UserIdProvider>
         <SetPagesProvider>
         <SetPagePostsProvider>
+          <ActiveShowPostsUpProvider>
+          <ActiveShowPostsDownProvider>
+          <ActiveMenuProvider>
+          <ActiveProvider>
           {children}
+          </ActiveProvider>
+          </ActiveMenuProvider>
+          </ActiveShowPostsDownProvider>
+          </ActiveShowPostsUpProvider>  
         </SetPagePostsProvider>
         </SetPagesProvider>
         </UserIdProvider>

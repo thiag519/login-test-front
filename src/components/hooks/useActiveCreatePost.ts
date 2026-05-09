@@ -1,8 +1,8 @@
 import { useContext } from "react"
-import { ActiveOpenModalContext } from "../contexts/activeModalCreatPostContext"
+import { ActiveModalPostContext } from "../contexts/activeModalCreatPostContext"
 
 export const useActiveOpenModal = () => {
-  const context = useContext(ActiveOpenModalContext);
-  if(!context) throw new Error('Context não encontrado');
+  const context = useContext(ActiveModalPostContext);
+  if(!context) throw new Error('ActiveModalPostContext não encontrado');
   return context;
 }

@@ -35,7 +35,7 @@ const Header = ({name}:Props) => {
         h-[7vh] min-h-14 flex items-center justify-center z-50 fixed bg-gray-900
       `}
     ><div className="w-[80%]  lg:w-7/10 flex items-center justify-between gap-3 ">
-        <div className="text-gray-400 text-2xl">LOGO </div>
+        <div className="text-gray-400 text-2xl">Validify </div>
         <div className="h-full w-full flex items-center justify-end gap-3 ">
           <form
             onSubmit={() => {}}

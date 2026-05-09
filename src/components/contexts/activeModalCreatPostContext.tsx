@@ -8,14 +8,14 @@ interface ActiveContextType {
   toggleActive:() => void
 }
 
-export const ActiveOpenModalContext = createContext<ActiveContextType| undefined>(undefined);
+export const ActiveModalPostContext = createContext<ActiveContextType| undefined>(undefined);
 
 export const ActiveProvider = ({children}:{children: ReactNode}) => {
   const [activeOpenModal, setActiveOpenModal] = useState<Active>(false);
   const toggleActiveOpenModal = () => setActiveOpenModal(!activeOpenModal);
   return (
-    <ActiveOpenModalContext.Provider value={{active: activeOpenModal, toggleActive: toggleActiveOpenModal} }>
+    <ActiveModalPostContext.Provider value={{active: activeOpenModal, toggleActive: toggleActiveOpenModal} }>
         {children} 
-    </ActiveOpenModalContext.Provider>
+    </ActiveModalPostContext.Provider>
   )
 }

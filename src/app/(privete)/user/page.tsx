@@ -1,5 +1,6 @@
 "use client"
 
+import { FeedAreaCarrying } from "@/components/carrying/feedAreaCarrying";
 import UserHeader from "@/components/header/userHeader";
 import { useActiveOpenModal } from "@/components/hooks/useActiveCreatePost";
 import { useIdUser } from "@/components/hooks/useIdUser";
@@ -11,18 +12,15 @@ import { useEffect, useState } from "react";
 const Page = () => {
   const {active} = useActiveOpenModal();
   const { userId } = useIdUser();
-
-    //const [user, setUser] = useState<UserType | null>(null);
-    const [name, setName] = useState<string>('')
+  const [name, setName] = useState<string>('');
   
     useEffect(() => {
      getUserName(userId).then(setName).catch(console.error);
     }, [userId]);
 
   if (!name) {
-    return <div className="w-full h-full">Carregando...</div>;
+    return <div className="w-full h-full"><FeedAreaCarrying/></div>;
   }
-  console.log("userId no page.tsx", userId, 'name:', name);
   return (
     <>
       <UserHeader name={name}/>
