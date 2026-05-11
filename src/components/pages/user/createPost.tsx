@@ -46,7 +46,7 @@ export const CreatePost = ({userId}: Props) => {
         setTimeout(() => {
           router.refresh();
           router.push("/user");
-        }, 2000)
+        }, 5000)
         
         
       } else {

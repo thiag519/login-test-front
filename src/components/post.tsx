@@ -23,13 +23,6 @@ export const Post = ({userPosts, userValidation}:Props) => {
   const {pages, setMorePagesPost} = useSetPagePosts();
   const { toggleActive} = useActiveOpenModal();
 
-  const handleVoteUp = (postId: number, userId: number|null) => {
-    setVoteUp(postId, userId);
-  };
-  const handleVoteDown = (postId: number, userId: number| null) => {
-    setVoteDown(postId, userId);
-  };
-
   return (
     <>
       {!userPosts?.length && (
@@ -84,14 +77,14 @@ export const Post = ({userPosts, userValidation}:Props) => {
               width={40}
               height={10}
               color="SteelBlue"
-              onClick={() => handleVoteUp(post.id, userId)}
+              onClick={() => setVoteUp(post.id, userId)}
             />
             <Button
               name={`${post.reactDown} Down`}
               width={40}
               height={10}
               color="Tomato"
-              onClick={() => handleVoteDown(post.id, userId)}
+              onClick={() => setVoteDown(post.id, userId)}
             />
           </div>
         </div>

@@ -6,7 +6,7 @@ export const Logout = () => {
   const router = useRouter()
   const handleLogout = async () => {
     await fetch("/api/logout", { method: "POST" });
-    router.push("/feed");
+    router.push("/");
   };
   return (
     <div className="w-[87%] h-auto pl-9 border-b-2 border-transparent hover:border-white pb-1">
